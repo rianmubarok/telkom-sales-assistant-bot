@@ -1,0 +1,9 @@
+{
+    "verbose": true,
+    "ignore": [
+        "src/data/logs.json",
+        "node_modules"
+    ],
+    "exec": "node src/app.js",
+    "ext": "js,json"
+}
