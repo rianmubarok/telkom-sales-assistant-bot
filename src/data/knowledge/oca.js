@@ -11,7 +11,7 @@ const oca = {
         "oca whatsapp api",
         "oca breach checker"
     ],
-    image: path.join(__dirname, "../../assets/images/indibiz.jpg"),
+    image: path.join(__dirname, "../../assets/images/oca.jpg"),
     answer: `
 *OCA (Omni Communication Assistant)*
 

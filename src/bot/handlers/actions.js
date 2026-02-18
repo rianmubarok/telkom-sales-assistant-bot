@@ -101,8 +101,8 @@ module.exports = (bot) => {
     bot.action("btn_pijar_packages", (ctx) => showPijarPackageTypes(ctx));
     bot.action("btn_pijar_terms", (ctx) => showPijarTerms(ctx));
     bot.action("btn_pijar_contact", (ctx) => showPijarContact(ctx));
-    bot.action("btn_pijar_single", (ctx) => showPijarPackageDetail(ctx, "single_solution"));
-    bot.action("btn_pijar_bundling", (ctx) => showPijarPackageDetail(ctx, "bundling"));
+    bot.action("btn_pijar_single", (ctx) => showPijarPackageDetail(ctx, "basic_platform"));
+    bot.action("btn_pijar_bundling", (ctx) => showPijarPackageDetail(ctx, "connectivity_bundle"));
 
     // Netmonk Actions
     bot.action("btn_netmonk_packages", (ctx) => showNetmonkPackageTypes(ctx));

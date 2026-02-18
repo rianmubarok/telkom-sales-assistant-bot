@@ -6,8 +6,8 @@ const showPijarMenu = async (ctx) => {
     await ctx.answerCbQuery();
 
     const buttons = [
-        [Markup.button.callback(pijarData.packages.single_solution.name, "btn_pijar_single")],
-        [Markup.button.callback(pijarData.packages.bundling.name, "btn_pijar_bundling")],
+        [Markup.button.callback(pijarData.packages.basic_platform.name, "btn_pijar_single")],
+        [Markup.button.callback(pijarData.packages.connectivity_bundle.name, "btn_pijar_bundling")],
         [Markup.button.callback("Informasi Harga", "btn_pijar_terms")],
         [Markup.button.callback("Kontak Bantuan & Layanan", "btn_pijar_contact")],
         [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
@@ -25,8 +25,8 @@ const showPijarMenu = async (ctx) => {
 const showPijarPackageTypes = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback(pijarData.packages.single_solution.name, "btn_pijar_single")],
-        [Markup.button.callback(pijarData.packages.bundling.name, "btn_pijar_bundling")],
+        [Markup.button.callback(pijarData.packages.basic_platform.name, "btn_pijar_single")],
+        [Markup.button.callback(pijarData.packages.connectivity_bundle.name, "btn_pijar_bundling")],
         [Markup.button.callback("⬅ Kembali ke Pijar", "btn_pijar")],
     ];
 

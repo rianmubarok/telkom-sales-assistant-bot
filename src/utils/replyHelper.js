@@ -5,7 +5,6 @@ const replyWithMediaOrText = async (ctx, content, buttons, image = null) => {
     try {
         // If image is provided, delete previous message and send new photo message
         if (image) {
-            await ctx.deleteMessage().catch(() => { }); // Delete previous text menu
             const media = image.startsWith("http") ? { url: image } : { source: image };
             await ctx.replyWithPhoto(
                 media,
@@ -15,6 +14,7 @@ const replyWithMediaOrText = async (ctx, content, buttons, image = null) => {
                     ...Markup.inlineKeyboard(buttons),
                 }
             );
+            await ctx.deleteMessage().catch(() => { }); // Delete previous text menu after sending new one
         } else {
             // If no image, try to edit existing message
             try {
