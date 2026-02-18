@@ -2,7 +2,6 @@ const { Markup } = require("telegraf");
 const {
   findAnswer,
   getProductList,
-  getStats,
 } = require("../../services/knowledgeService");
 
 const { logQuestion } = require("../../utils/logger");
@@ -31,25 +30,27 @@ module.exports = async (ctx) => {
           ...Markup.inlineKeyboard([
             [Markup.button.callback("IndiHome", "btn_indihome")],
             [Markup.button.callback("IndiBiz", "btn_indibiz")],
+            [Markup.button.callback("OCA Indonesia", "btn_oca")],
             [Markup.button.callback("Pijar Sekolah", "btn_pijar")],
+            [Markup.button.callback("Netmonk", "btn_netmonk")],
+            [Markup.button.callback("Antares Eazy", "btn_eazy")],
           ]),
         }
       );
 
-    case "📊 statistik":
-      await ctx.sendChatAction("typing");
-      return ctx.reply(getStats());
-
     case "📞 kontak admin":
       await ctx.sendChatAction("typing");
-      return ctx.reply("📞 *Admin Sales Telkom Jepara*\n\n0812-XXXX-XXXX", {
-        parse_mode: "Markdown",
-      });
+      return ctx.reply(
+        "📞 *Kontak Layanan Telkom Group*\n\nSilakan hubungi layanan resmi kami:\n\n☎️ *Call Center 24 Jam:*\n• 147 (Telkom Indonesia)\n• 188 (IndiHome / Telkomsel)\n• 1500-250 (Indibiz)\n\n📍 *Kunjungan Langsung:*\nSilakan datang ke Plasa Telkom terdekat untuk layanan tatap muka.",
+        {
+          parse_mode: "Markdown",
+        }
+      );
 
     case "❓ bantuan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "💡 *Panduan Penggunaan*\n\nKetik nama produk seperti:\n• indihome\n• indibiz\n• pijar sekolah\n\nAtau gunakan menu yang tersedia.",
+        "💡 *Panduan Penggunaan Bot*\n\n1. Tekan tombol *📦 Daftar Produk* untuk melihat layanan yang tersedia.\n2. Pilih produk (IndiHome, Indibiz, dll) untuk melihat detail paket.\n3. Tekan *Syarat & Ketentuan* untuk info berlangganan.\n4. Tekan *Kontak Bantuan & Layanan* di menu produk jika butuh bantuan spesifik.",
         { parse_mode: "Markdown" }
       );
   }

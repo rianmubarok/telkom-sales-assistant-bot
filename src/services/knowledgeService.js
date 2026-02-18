@@ -32,13 +32,8 @@ function getProductList() {
 }
 
 // STATS
-function getStats() {
-  return `Total produk tersedia: ${knowledge.length}`;
-}
-
 module.exports = {
   findAnswer,
   findKnowledge,
   getProductList,
-  getStats,
 };

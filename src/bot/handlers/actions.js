@@ -1,230 +1,67 @@
 const { Markup } = require("telegraf");
+const { replyWithMediaOrText } = require("../../utils/replyHelper");
+
 const {
-    findAnswer,
-    findKnowledge,
-} = require("../../services/knowledgeService");
-const indihomeData = require("../../data/knowledge/indihome");
-const indibizData = require("../../data/knowledge/indibiz");
+    showIndihomeMenu,
+    showIndihomePackageTypes,
+    showIndihomeTerms,
+    showIndihomePackageDetail,
+    showIndihomeContact
+} = require("./products/indihome");
 
-// Helper: Send text or photo (clearing previous message if needed)
-const replyWithMediaOrText = async (ctx, content, buttons, image = null) => {
-    try {
-        // If image is provided, delete previous message and send new photo message
-        if (image) {
-            await ctx.deleteMessage().catch(() => { }); // Delete previous text menu
-            const media = image.startsWith("http") ? { url: image } : { source: image };
-            await ctx.replyWithPhoto(
-                media,
-                {
-                    caption: content,
-                    parse_mode: "Markdown",
-                    ...Markup.inlineKeyboard(buttons),
-                }
-            );
-        } else {
-            // If no image, try to edit existing message
-            try {
-                // Check if current message has photo, if so, delete and send text
-                if (ctx.callbackQuery.message.photo) {
-                    await ctx.deleteMessage();
-                    throw new Error("Switching from photo to text");
-                }
-                await ctx.editMessageText(content, {
-                    parse_mode: "Markdown",
-                    ...Markup.inlineKeyboard(buttons),
-                });
-            } catch (err) {
-                // Fallback: Send new text message (e.g. if switching from photo or edit expired)
-                await ctx.reply(content, {
-                    parse_mode: "Markdown",
-                    ...Markup.inlineKeyboard(buttons),
-                });
-            }
-        }
-    } catch (error) {
-        console.error("Error in replyWithMediaOrText:", error);
-        // Ultimate fallback
-        await ctx.reply(content, {
-            parse_mode: "Markdown",
-            ...Markup.inlineKeyboard(buttons),
-        });
-    }
-};
+const {
+    showIndibizMenu,
+    showIndibizPackageTypes,
+    showIndibizTerms,
+    showIndibizPackageDetail,
+    showIndibizContact
+} = require("./products/indibiz");
 
-// Reusable function to handle product selection (generic)
-const handleProduct = async (ctx, productName) => {
-    const data = findKnowledge(productName);
+const {
+    showOcaMenu,
+    showOcaPackageTypes,
+    showOcaTerms,
+    showOcaPackageDetail,
+    showOcaContact
+} = require("./products/oca");
 
-    if (data) {
-        await ctx.answerCbQuery();
-        const buttons = [[Markup.button.callback("⬅ Kembali ke Menu", "btn_back")]];
-        await replyWithMediaOrText(ctx, data.answer, buttons, data.image);
-    } else {
-        await ctx.answerCbQuery("Data tidak ditemukan.");
-    }
-};
+const {
+    showPijarMenu,
+    showPijarPackageTypes,
+    showPijarTerms,
+    showPijarPackageDetail,
+    showPijarContact
+} = require("./products/pijar");
 
-/**
- * INDIHOME HANDLERS
- */
+const {
+    showNetmonkMenu,
+    showNetmonkPackageTypes,
+    showNetmonkTerms,
+    showNetmonkPackageDetail,
+    showNetmonkContact
+} = require("./products/netmonk");
 
-// 1. Menu Utama IndiHome (Pengertian Umum)
-const showIndihomeMenu = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("Lihat Pilihan Paket", "btn_ih_packages")],
-        [Markup.button.callback("Syarat & Ketentuan", "btn_ih_terms")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
-    ];
-
-    // Pass image from indihomeData (if any)
-    await replyWithMediaOrText(
-        ctx,
-        indihomeData.answer,
-        buttons,
-        indihomeData.image
-    );
-};
-
-// 2. Menu Pilihan Paket (Penjelasan Jenis Paket)
-const showIndihomePackageTypes = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [
-            Markup.button.callback(
-                indihomeData.packages.internet_only.name,
-                "btn_ih_internet_only"
-            ),
-        ],
-        [
-            Markup.button.callback(
-                indihomeData.packages.netflix.name,
-                "btn_ih_netflix"
-            ),
-        ],
-        [
-            Markup.button.callback(
-                indihomeData.packages.dynamic.name,
-                "btn_ih_dynamic"
-            ),
-        ],
-        [Markup.button.callback("⬅ Kembali ke IndiHome", "btn_indihome")],
-    ];
-
-    // Disini tidak pakai gambar, jadi image=null
-    await replyWithMediaOrText(
-        ctx,
-        indihomeData.package_intro,
-        buttons,
-        null // null means use text-only (edit if possible)
-    );
-};
-
-// 3. Menu Syarat & Ketentuan
-const showIndihomeTerms = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("⬅ Kembali ke IndiHome", "btn_indihome")],
-    ];
-
-    await replyWithMediaOrText(ctx, indihomeData.terms, buttons, null);
-};
-
-// 4. Detail Paket (Daftar Harga)
-const showIndihomePackageDetail = async (ctx, key) => {
-    const pkg = indihomeData.packages[key];
-    if (!pkg) return ctx.answerCbQuery("Paket tidak ditemukan");
-
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("⬅ Pilihan Paket", "btn_ih_packages")],
-        [Markup.button.callback("Menu Utama", "btn_back")],
-    ];
-
-    await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
-};
-
-/**
- * INDIBIZ HANDLERS
- */
-
-// 1. Menu Utama IndiBiz
-const showIndibizMenu = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("Lihat Pilihan Paket", "btn_ib_packages")],
-        [Markup.button.callback("Syarat & Ketentuan", "btn_ib_terms")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
-    ];
-
-    await replyWithMediaOrText(
-        ctx,
-        indibizData.answer,
-        buttons,
-        indibizData.image
-    );
-};
-
-// 2. Menu Pilihan Paket IndiBiz
-const showIndibizPackageTypes = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [
-            Markup.button.callback(
-                indibizData.packages.basic.name,
-                "btn_ib_basic"
-            ),
-        ],
-        [
-            Markup.button.callback(
-                indibizData.packages.business.name,
-                "btn_ib_business"
-            ),
-        ],
-        [Markup.button.callback("⬅ Kembali ke IndiBiz", "btn_indibiz")],
-    ];
-
-    await replyWithMediaOrText(
-        ctx,
-        indibizData.package_intro,
-        buttons,
-        null
-    );
-};
-
-// 3. Menu Syarat & Ketentuan IndiBiz
-const showIndibizTerms = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("⬅ Kembali ke IndiBiz", "btn_indibiz")],
-    ];
-
-    await replyWithMediaOrText(ctx, indibizData.terms, buttons, null);
-};
-
-// 4. Detail Paket IndiBiz
-const showIndibizPackageDetail = async (ctx, key) => {
-    const pkg = indibizData.packages[key];
-    if (!pkg) return ctx.answerCbQuery("Paket tidak ditemukan");
-
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("⬅ Pilihan Paket", "btn_ib_packages")],
-        [Markup.button.callback("Menu Utama", "btn_back")],
-    ];
-
-    await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
-};
+const {
+    showEazyMenu,
+    showEazyPackageTypes,
+    showEazyTerms,
+    showEazyPackageDetail,
+    showEazyContact
+} = require("./products/eazy");
 
 module.exports = (bot) => {
     // Action Handlers (Main Menu)
     bot.action("btn_indihome", (ctx) => showIndihomeMenu(ctx));
     bot.action("btn_indibiz", (ctx) => showIndibizMenu(ctx));
-    bot.action("btn_pijar", (ctx) => handleProduct(ctx, "pijar"));
+    bot.action("btn_oca", (ctx) => showOcaMenu(ctx));
+    bot.action("btn_pijar", (ctx) => showPijarMenu(ctx));
+    bot.action("btn_netmonk", (ctx) => showNetmonkMenu(ctx));
+    bot.action("btn_eazy", (ctx) => showEazyMenu(ctx));
 
     // IndiHome Submenus
     bot.action("btn_ih_packages", (ctx) => showIndihomePackageTypes(ctx));
     bot.action("btn_ih_terms", (ctx) => showIndihomeTerms(ctx));
+    bot.action("btn_ih_contact", (ctx) => showIndihomeContact(ctx));
 
     // IndiHome Package Details
     bot.action("btn_ih_internet_only", (ctx) =>
@@ -240,6 +77,7 @@ module.exports = (bot) => {
     // IndiBiz Submenus
     bot.action("btn_ib_packages", (ctx) => showIndibizPackageTypes(ctx));
     bot.action("btn_ib_terms", (ctx) => showIndibizTerms(ctx));
+    bot.action("btn_ib_contact", (ctx) => showIndibizContact(ctx));
 
     // IndiBiz Package Details
     bot.action("btn_ib_basic", (ctx) =>
@@ -249,12 +87,50 @@ module.exports = (bot) => {
         showIndibizPackageDetail(ctx, "business")
     );
 
+    // OCA Actions
+    bot.action("btn_oca_packages", (ctx) => showOcaPackageTypes(ctx));
+    bot.action("btn_oca_terms", (ctx) => showOcaTerms(ctx));
+    bot.action("btn_oca_contact", (ctx) => showOcaContact(ctx));
+
+    bot.action("btn_oca_interaction", (ctx) => showOcaPackageDetail(ctx, "interaction"));
+    bot.action("btn_oca_blast", (ctx) => showOcaPackageDetail(ctx, "blast"));
+    bot.action("btn_oca_ai", (ctx) => showOcaPackageDetail(ctx, "ai"));
+    bot.action("btn_oca_breach", (ctx) => showOcaPackageDetail(ctx, "breach_checker"));
+
+    // Pijar Actions
+    bot.action("btn_pijar_packages", (ctx) => showPijarPackageTypes(ctx));
+    bot.action("btn_pijar_terms", (ctx) => showPijarTerms(ctx));
+    bot.action("btn_pijar_contact", (ctx) => showPijarContact(ctx));
+    bot.action("btn_pijar_single", (ctx) => showPijarPackageDetail(ctx, "single_solution"));
+    bot.action("btn_pijar_bundling", (ctx) => showPijarPackageDetail(ctx, "bundling"));
+
+    // Netmonk Actions
+    bot.action("btn_netmonk_packages", (ctx) => showNetmonkPackageTypes(ctx));
+    bot.action("btn_netmonk_terms", (ctx) => showNetmonkTerms(ctx));
+    bot.action("btn_netmonk_contact", (ctx) => showNetmonkContact(ctx));
+
+    bot.action("btn_netmonk_prime", (ctx) => showNetmonkPackageDetail(ctx, "prime"));
+    bot.action("btn_netmonk_hi", (ctx) => showNetmonkPackageDetail(ctx, "hi"));
+    bot.action("btn_netmonk_enterprise", (ctx) => showNetmonkPackageDetail(ctx, "enterprise"));
+
+    // Eazy Cam Actions
+    bot.action("btn_eazy_packages", (ctx) => showEazyPackageTypes(ctx));
+    bot.action("btn_eazy_terms", (ctx) => showEazyTerms(ctx));
+    bot.action("btn_eazy_contact", (ctx) => showEazyContact(ctx));
+
+    bot.action("btn_eazy_purchase", (ctx) => showEazyPackageDetail(ctx, "purchase"));
+    bot.action("btn_eazy_cloud", (ctx) => showEazyPackageDetail(ctx, "cloud_subscription"));
+    bot.action("btn_eazy_bundling", (ctx) => showEazyPackageDetail(ctx, "bundling_indibiz"));
+
     // Back Button (Main Menu)
     bot.action("btn_back", async (ctx) => {
         const buttons = [
             [Markup.button.callback("IndiHome", "btn_indihome")],
             [Markup.button.callback("IndiBiz", "btn_indibiz")],
+            [Markup.button.callback("OCA Indonesia", "btn_oca")],
             [Markup.button.callback("Pijar Sekolah", "btn_pijar")],
+            [Markup.button.callback("Netmonk", "btn_netmonk")],
+            [Markup.button.callback("Antares Eazy", "btn_eazy")],
         ];
         await replyWithMediaOrText(
             ctx,

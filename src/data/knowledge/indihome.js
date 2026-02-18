@@ -6,13 +6,22 @@ const indihome = {
     answer: `
 *IndiHome (Residensial/Rumah)*
 
-Layanan internet ultra-cepat menggunakan teknologi fiber optik untuk kebutuhan keluarga. Menawarkan pilihan layanan *Triple Play* yang terdiri dari Internet (WiFi), Telepon Rumah, dan TV Interaktif (UseeTV).
+Layanan internet ultra-cepat menggunakan teknologi fiber optik dari Telkomsel untuk kebutuhan keluarga. Menawarkan paket terintegrasi Internet (WiFi), Telepon Rumah, dan IndiHome TV.
 
 *Kenapa pilih IndiHome?*
-• Jaringan terluas di seluruh Indonesia
-• Koneksi stabil & cepat dengan Fiber Optik
-• Pilihan paket fleksibel sesuai kebutuhan
-• Akses hiburan lengkap (Streaming, Games, TV)
+• Jaringan terluas di seluruh Indonesia.
+• Koneksi stabil & cepat dengan Fiber Optik.
+• Pilihan paket hiburan lengkap (Netflix, Disney+, dll).
+• Dukungan layanan pelanggan 24/7 melalui 188.
+`,
+    contact: `
+*Kontak Bantuan & Layanan Resmi IndiHome:*
+
+📞 *Call Center:* 188 (24/7)
+📱 *WhatsApp (Veronika):* [0811-1111-1111](https://wa.me/6281111111111)
+📱 *WhatsApp (Layanan):* [0811-6147-147](https://wa.me/628116147147)
+📧 *Email:* cs@telkomsel.com
+🌐 *Social Media:* @IndiHome / @IndiHomeCare
 `,
     package_intro: `
 *Pilihan Jenis Paket IndiHome*
@@ -29,21 +38,11 @@ Bundling Internet WiFi + Kuota Keluarga Telkomsel dalam satu tagihan.
     terms: `
 *Syarat & Ketentuan*
 
-1. Harga yang tercantum untuk pembayaran setiap bulannya.
-
-2. Harga belum termasuk PPN sesuai dengan ketentuan yang berlaku.
-
-3. Harga paket IndiHome dapat berbeda sesuai dengan area dan lokasi pemasangan.
-
-4. Promo Biaya Pasang Baru (PSB) IndiHome sebesar 70% menjadi Rp150.000 dibayarkan setelah proses pemasangan perangkat layanan Wifi IndiHome selesai.
-
-5. Pembayaran tagihan bulanan Wifi IndiHome dilakukan setiap tanggal 5-20 di setiap bulannya. Untuk bulan pertama pemakaian, pembayaran dilakukan di bulan selanjutnya. Pembayaran Paket IndiHome menggunakan skema Pasca bayar (Pakai layanan dulu, baru bayar)
-
-6. Kontrak berlangganan Wifi IndiHome berlaku selama minimal 12 (dua belas) bulan setelah layanan Wifi IndiHome berstatus aktif. Apabila pelanggan memutuskan untuk berhenti berlangganan sebelum masa berlaku kontrak berakhir, maka akan dikenakan denda sebesar Rp1.000.000.
-
-7. Khusus Promo Paket Eznet Telkomsel hanya tersedia di kota-kota tertentu. Harga Paket Eznet dapat berbeda sesuai dengan area dan lokasi pemasangan.
-
-8. Pelanggan dilarang menjual kembali, baik sebagian atau seluruh layanan Wifi IndiHome dan dilarang mengalihkan, mengubah, atau menyalahgunakan setiap jaringan IndiHome dan layanan Wifi IndiHome.
+1. Harga belum termasuk PPN 11%.
+2. Promo Biaya Pasang Baru (PSB) Rp150.000 dibayarkan setelah pemasangan selesai.
+3. Harga dapat berbeda sesuai dengan area dan lokasi pemasangan.
+4. Kontrak berlangganan minimal 12 bulan. Pengakhiran sebelum masa kontrak dikenakan denda Rp1.000.000.
+5. Pembayaran tagihan dilakukan setiap tanggal 5-20 setiap bulannya (Pascabayar).
 `,
     packages: {
         internet_only: {

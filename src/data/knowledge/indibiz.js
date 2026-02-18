@@ -6,32 +6,41 @@ const indibiz = {
     answer: `
 *IndiBiz (Solusi Bisnis)*
 
-Layanan internet & solusi digital dari Telkom Indonesia khusus untuk mendukung operasional bisnis UMKM hingga korporasi besar.
+Ekosistem solusi digital dari Telkom Indonesia yang dirancang khusus untuk mendukung operasional bisnis UMKM hingga korporasi.
 
 *Keunggulan IndiBiz:*
-• Internet Cepat dan Stabil Tanpa FUP
-• Harga Terjangkau & Pilihan Paket
-• Support teknis prioritas
-• Bundling solusi digital (CCTV, Kasir, CRM)
+• Internet High Speed **Tanpa FUP** (Tanpa batasan kuota).
+• Koneksi prioritas yang lebih stabil untuk bisnis.
+• Support teknis prioritas melalui channel khusus.
+• Bundling solusi digital (CCTV, Kasir digital, Cloud, dll).
+`,
+    contact: `
+*Kontak Bantuan & Layanan Resmi IndiBiz:*
+
+📞 *Call Center:* 1500-250 / 0800-1-835566
+📱 *WhatsApp:* [0812-5888-1915](https://wa.me/6281258881915) / [0812-8323-5566](https://wa.me/6281283235566)
+📧 *Email:* indibizID.care@telkom.co.id
 `,
     package_intro: `
 *Pilihan Paket IndiBiz*
 
 1️⃣ *Paket Basic*
-Solusi internet hemat untuk usaha kecil & rintisan. Khusus untuk pelanggan Small Medium Enterprise (SME)
+Solusi internet hemat tanpa FUP untuk usaha rintisan/SME.
 
 2️⃣ *Paket Bisnis*
-Internet prioritas untuk performa bisnis makin melesat. Cocok untuk perusahaan/bisnis yang membutuhkan performa tinggi.
+Internet dengan performa lebih tinggi dan stabil untuk kebutuhan operasional intensif.
 `,
     terms: `
 *Syarat & Ketentuan IndiBiz*
 
 1. Harga belum termasuk PPN 11%.
-2. Biaya Pasang Baru (PSB) Rp 150.000 dan dibayarkan di awal saat instalasi pemasangan di lokasi anda.
+2. Biaya Pasang Baru (PSB) Rp150.000 dibayarkan di awal saat instalasi.
+3. Layanan khusus untuk segmen bisnis/badan usaha.
+4. Mendapatkan akses ke dashboard Indibiz untuk monitoring layanan.
 `,
     packages: {
         basic: {
-            name: "Paket Basic",
+            name: "Lihat Paket Basic",
             slug: "ib_basic",
             detail: `
 *Daftar Harga Paket Basic*
@@ -47,7 +56,7 @@ _Harga belum termasuk PPN 11% & biaya pemasangan._
 `
         },
         business: {
-            name: "Paket Bisnis",
+            name: "Lihat Paket Bisnis",
             slug: "ib_business",
             detail: `
 *Daftar Harga Paket Bisnis*
