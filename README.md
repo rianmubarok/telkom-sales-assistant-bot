@@ -1,6 +1,6 @@
 # Telkom Bot Telegram
 
-A simple Telegram Bot designed to provide information about Telkom Group services such as IndiHome, IndiBiz, and Pijar Sekolah.
+A simple Telegram Bot designed to provide information about Telkom Group services.
 
 ## Features
 
