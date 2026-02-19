@@ -135,7 +135,7 @@ module.exports = async (ctx) => {
   // FALLBACK
 
   return ctx.reply(
-    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\nKetik *❓ bantuan* untuk panduan.",
+    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *📦 Daftar Produk* untuk cek paket resmi tanpa AI.\n\nKetik *❓ bantuan* untuk panduan lengkap.",
     { parse_mode: "Markdown" }
   );
 };
