@@ -8,4 +8,5 @@ if (!process.env.BOT_TOKEN) {
 module.exports = {
   BOT_TOKEN: process.env.BOT_TOKEN,
   ADMIN_ID: process.env.ADMIN_ID,
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
 };

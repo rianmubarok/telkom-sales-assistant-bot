@@ -134,8 +134,27 @@ module.exports = (bot) => {
         ];
         await replyWithMediaOrText(
             ctx,
-            "📦 *Silakan pilih layanan yang ingin Anda ketahui:*",
+            "*Silakan pilih layanan yang ingin Anda ketahui:*",
             buttons
         );
+    });
+
+    // FAQ Actions
+    const { showFaqMenu, showFaqAnswer } = require("./faqHandler");
+
+    bot.action(/^faq_page_(\d+)$/, (ctx) => {
+        const page = parseInt(ctx.match[1]);
+        showFaqMenu(ctx, page);
+    });
+
+    bot.action(/^faq_ans_(\d+)$/, (ctx) => {
+        const index = parseInt(ctx.match[1]);
+        showFaqAnswer(ctx, index);
+    });
+
+    bot.action("delete_msg", async (ctx) => {
+        try {
+            await ctx.deleteMessage();
+        } catch (e) { }
     });
 };

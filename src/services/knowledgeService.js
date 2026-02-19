@@ -17,7 +17,10 @@ function findKnowledge(message) {
 
   for (const item of knowledge) {
     for (const keyword of item.keywords) {
-      if (lowerMessage.includes(keyword.toLowerCase())) {
+      // Gunakan regex untuk pencocokan kata yang tepat (whole word match)
+      // Agar "wifi" tidak cocok dengan "wifi id" secara parsial jika tidak diinginkan
+      const regex = new RegExp(`\\b${keyword.toLowerCase()}\\b`, 'i');
+      if (regex.test(lowerMessage)) {
         return item;
       }
     }

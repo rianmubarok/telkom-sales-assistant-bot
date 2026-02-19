@@ -20,11 +20,11 @@ module.exports = async (ctx) => {
   // MENU SECTION
 
   switch (message) {
-    case "box daftar produk": // handling typo if any, original was emoji
+    case "📦 lihat daftar produk":
     case "📦 daftar produk":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "📦 *Silakan pilih layanan yang ingin Anda ketahui:*",
+        "*Silakan pilih layanan yang ingin Anda ketahui:*",
         {
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
@@ -41,7 +41,7 @@ module.exports = async (ctx) => {
     case "📞 kontak admin":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "📞 *Kontak Layanan Telkom Group*\n\nSilakan hubungi layanan resmi kami:\n\n☎️ *Call Center 24 Jam:*\n• 147 (Telkom Indonesia)\n• 188 (IndiHome / Telkomsel)\n• 1500-250 (Indibiz)\n\n📍 *Kunjungan Langsung:*\nSilakan datang ke Plasa Telkom terdekat untuk layanan tatap muka.",
+        "📞 *Kontak Layanan Telkom Group*\n\nSilakan hubungi layanan resmi kami:\n\n☎️ *Call Center 24 Jam:*\n• 147 (Telkom Indonesia)\n• 188 (IndiHome / Telkomsel)\n• 1500-250 (Indibiz)\n\n📍 *Kunjungan Langsung (Telkom Jepara):*\nJl. Pemuda No.3, Potroyudan XI, Potroyudan\nKec. Jepara, Kabupaten Jepara, Jawa Tengah 59412\n\n📞 *Telepon:* 0800 1835566",
         {
           parse_mode: "Markdown",
         }
@@ -50,9 +50,16 @@ module.exports = async (ctx) => {
     case "❓ bantuan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "💡 *Panduan Penggunaan Bot*\n\n1. Tekan tombol *📦 Daftar Produk* untuk melihat layanan yang tersedia.\n2. Pilih produk (IndiHome, Indibiz, dll) untuk melihat detail paket.\n3. Tekan *Syarat & Ketentuan* untuk info berlangganan.\n4. Tekan *Kontak Bantuan & Layanan* di menu produk jika butuh bantuan spesifik.",
+        "💡 *Panduan Penggunaan Telkom Bot*\n\nBot ini dirancang untuk membantu Anda menemukan informasi layanan Telkom dengan mudah.\n\n*1. 📦 Daftar Produk*\nTekan tombol ini untuk melihat katalog lengkap layanan kami (IndiHome, IndiBiz, Pijar, dll) beserta detail paketnya.\n\n*2. 📞 Kontak Admin*\nInformasi alamat kantor Telkom Jepara dan nomor layanan pelanggan.\n\n*3. 💬 Chat Langsung (AI)*\nAnda bisa langsung mengetik pertanyaan apa saja! Bot didukung oleh AI cerdas yang siap menjawab kebutuhan Anda.\n\n*4. ❓ Bantuan*\nMenampilkan pesan panduan ini kembali.",
         { parse_mode: "Markdown" }
       );
+
+    case "❓ faq":
+    case "💬 faq": // handle typo or alternative
+      await ctx.sendChatAction("typing");
+      const { showFaqMenu } = require("../handlers/faqHandler");
+      return showFaqMenu(ctx, 0);
+
   }
 
   // ADMIN COMMAND
@@ -66,22 +73,65 @@ module.exports = async (ctx) => {
     }
   }
 
-  // KNOWLEDGE SEARCH
+  // KNOWLEDGE SEARCH (DISABLED - Handled by AI)
+  // const answer = findAnswer(message);
+  // if (answer) {
+  //   await ctx.sendChatAction("typing");
+  //   return ctx.reply(answer, {
+  //     parse_mode: "Markdown",
+  //   });
+  // }
 
-  const answer = findAnswer(message);
-
-  if (answer) {
+  // AI INTELLIGENT RESPONSE (GEMINI)
+  try {
     await ctx.sendChatAction("typing");
-    return ctx.reply(answer, {
-      parse_mode: "Markdown",
-    });
+    const { generateAnswer } = require("../../services/geminiService");
+    const aiResponse = await generateAnswer(message);
+
+    if (aiResponse) {
+      // Split message smartly by newlines to avoid breaking Markdown entities
+      const MAX_LENGTH = 3000;
+      const messages = [];
+
+      if (aiResponse.length > MAX_LENGTH) {
+        const lines = aiResponse.split('\n');
+        let currentChunk = "";
+
+        for (const line of lines) {
+          if ((currentChunk + line).length < MAX_LENGTH) {
+            currentChunk += line + "\n";
+          } else {
+            messages.push(currentChunk);
+            currentChunk = line + "\n";
+          }
+        }
+        if (currentChunk) messages.push(currentChunk);
+      } else {
+        messages.push(aiResponse);
+      }
+
+      for (const msg of messages) {
+        try {
+          await ctx.reply(msg + "\n\n_(Dijawab oleh AI Asisten)_", {
+            parse_mode: "Markdown"
+          });
+        } catch (err) {
+          console.error("Markdown Error, sending plain text:", err.message);
+          // Fallback to plain text if Markdown fails
+          await ctx.reply(msg + "\n\n(Dijawab oleh AI Asisten)");
+        }
+      }
+      return;
+    }
+  } catch (error) {
+    console.error("AI Generation Error:", error);
+    // Proceed to fallback
   }
 
   // FALLBACK
 
-  await ctx.sendChatAction("typing");
   return ctx.reply(
-    "Maaf, informasi belum tersedia.\n\nKetik *❓ bantuan* untuk panduan.",
+    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\nKetik *❓ bantuan* untuk panduan.",
     { parse_mode: "Markdown" }
   );
 };

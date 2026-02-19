@@ -4,11 +4,11 @@ module.exports = async (ctx) => {
   const username = ctx.from.first_name || "Kak";
 
   await ctx.reply(
-    `Halo ${username}! 👋\n\nSelamat datang di *Bot Layanan Telkom Jepara*.\nSaya siap membantu memberikan informasi seputar layanan kami.\n\n*Silakan pilih menu di bawah ini:*`,
+    `Halo ${username}! 👋\n\nSelamat datang di *Bot Layanan Telkom Jepara*.\nSaya adalah asisten virtual pintar yang siap membantu Anda 24/7.\n\n*Silakan pilih menu di bawah atau langsung ketik pertanyaan Anda:*`,
     {
       parse_mode: "Markdown",
       ...Markup.keyboard([
-        ["📦 Daftar Produk"],
+        ["📦 Daftar Produk", "💬 FAQ"],
         ["📞 Kontak Admin", "❓ Bantuan"],
       ])
         .resize()
