@@ -60,7 +60,10 @@ INSTRUKSI:
 3. JIKA informasi tidak ada dalam data di atas, arahkan user untuk menghubungi Call Center atau datang ke **Telkom Daerah Jepara** (Jl. Pemuda No.3, Potroyudan XI, Jepara. Telp: 0800 1835566). JANGAN MENGARANG informasi harga atau paket.
 4. Jika user bertanya "apa itu [produk]", jelaskan sesingkat dan sejelas mungkin dari data.
 5. Jika user bertanya rekomendasi, berikan saran berdasarkan kebutuhan mereka (misal: "untuk keluarga" -> IndiHome, "untuk bisnis" -> IndiBiz).
-6. HINDARI ERROR MARKDOWN TELEGRAM.
+6. RULES MARKDOWN TELEGRAM (PENTING):
+   - JANGAN gunakan underscore (_) untuk apapun. Ganti dengan spasi. Underscore menyebabkan error.
+   - Gunakan satu bintang (*) untuk bold (jangan dua).
+   - Jangan buat list dengan tombol strip (-), gunakan bullet point (•).
 `;
 
         const response = await genAI.models.generateContent({

@@ -86,15 +86,19 @@ module.exports = async (ctx) => {
   try {
     await ctx.sendChatAction("typing");
     const { generateAnswer } = require("../../services/geminiService");
+    const { sanitizeMarkdown } = require("../../utils/textUtils");
     const aiResponse = await generateAnswer(message);
 
     if (aiResponse) {
+      // Sanitize response for Telegram Markdown
+      const cleanResponse = sanitizeMarkdown(aiResponse);
+
       // Split message smartly by newlines to avoid breaking Markdown entities
       const MAX_LENGTH = 3900; // Telegram limit is 4096, keeping buffer for footer
       const messages = [];
 
-      if (aiResponse.length > MAX_LENGTH) {
-        const lines = aiResponse.split('\n');
+      if (cleanResponse.length > MAX_LENGTH) {
+        const lines = cleanResponse.split('\n');
         let currentChunk = "";
 
         for (const line of lines) {
@@ -107,7 +111,7 @@ module.exports = async (ctx) => {
         }
         if (currentChunk) messages.push(currentChunk);
       } else {
-        messages.push(aiResponse);
+        messages.push(cleanResponse);
       }
 
       for (const msg of messages) {
