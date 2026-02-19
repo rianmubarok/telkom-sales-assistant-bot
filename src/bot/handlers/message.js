@@ -90,7 +90,7 @@ module.exports = async (ctx) => {
 
     if (aiResponse) {
       // Split message smartly by newlines to avoid breaking Markdown entities
-      const MAX_LENGTH = 3000;
+      const MAX_LENGTH = 3900; // Telegram limit is 4096, keeping buffer for footer
       const messages = [];
 
       if (aiResponse.length > MAX_LENGTH) {
@@ -116,7 +116,7 @@ module.exports = async (ctx) => {
             parse_mode: "Markdown"
           });
         } catch (err) {
-          console.error("Markdown Error, sending plain text:", err.message);
+          console.error(`Telegram Markdown Error (falling back to plain text): ${err.description || err.message}`);
           // Fallback to plain text if Markdown fails
           await ctx.reply(msg + "\n\n(Dijawab oleh AI Asisten)");
         }
