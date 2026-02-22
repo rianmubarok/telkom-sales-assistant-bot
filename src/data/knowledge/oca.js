@@ -26,17 +26,12 @@ Kirim pesan massal (broadcast) promosi atau notifikasi ke ribuan kontak sekaligu
 3. *OCA Breaker (Breach Checker)*
 Layanan keamanan data untuk mendeteksi dan mencegah kebocoran informasi perusahaan/pelanggan di internet.
 `,
-
-
-    terms: `
-*Informasi Harga & Berlangganan*
-
-Harga berlangganan OCA terdiri dari biaya platform (bulanan/tahunan) dan biaya penggunaan (per pesan/sesi). Untuk kebutuhan kustom skala besar, tersedia paket Enterprise.
-`,
     packages: {
         interaction: {
             name: "OCA Interaction",
             slug: "oca_interaction",
+            image: path.join(__dirname, "../../assets/images/oca_interaction_lite.png"),
+            pricing_image: path.join(__dirname, "../../assets/images/oca_interaction_lite_price.png"),
             detail: `
 *OCA Interaction Lite*
 
@@ -58,6 +53,24 @@ Dashboard terpadu untuk mengelola seluruh social media dalam satu pintu. Diranca
 • Quick Reply & Knowledge Base: Gunakan template pesan seragam dan pusat informasi produk untuk respon agen yang lebih instan.
 
 • Report & Insight: Pantau performa agen dan analisis produktivitas melalui laporan yang mudah digunakan.
+`,
+            pricing: `
+*Harga Paket Bundling IndiBiz x OCA Interaction Lite*
+
+• *50 Mbps:* Rp 492.950/bulan
+• *75 Mbps:* Rp 582.950/bulan
+• *100 Mbps:* Rp 692.950/bulan
+• *150 Mbps:* Rp 902.950/bulan
+
+_Add-on OCA Interaction Lite Rp 108.000. Melalui order di SC-ONE dan My Indibiz._
+_Biaya Pasang Baru (PSB) untuk Layanan Indibiz add-on sebesar Rp0._
+
+*Syarat & Ketentuan*
+1. Biaya belum termasuk PPN.
+2. Paket aktif / dapat diorder untuk seluruh Regional.
+3. Registrasi paket dilakukan melalui SC One, NCX EBIS, Landing Page Creator EBIS, web myIndibiz.co.id, myIndibiz Partner, dan LPC (IFB) EBIS.
+4. Setiap komponen paket (kecuali perangkat) tidak dapat dilakukan order terpisah (ala carte), hanya berlaku dalam penawaran paket bundling.
+5. NDE: Strategi Go To Market (GTM) Layanan Indibiz 2S (Netmonk atau OCA) dan Layanan Indibiz add-on. C. Tel. 152/UM 000/COP-G0200000/2023. 14 Juli 2023.
 `
         },
         blast: {

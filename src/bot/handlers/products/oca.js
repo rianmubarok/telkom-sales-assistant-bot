@@ -35,13 +35,15 @@ const showOcaPackageDetail = async (ctx, key) => {
     await ctx.answerCbQuery();
     const buttons = [];
     if (pkg.features) {
-        buttons.push([Markup.button.callback(`💡 Lihat Fitur ${pkg.name}`, `btn_oca_feat_${key}`)]);
+        buttons.push([Markup.button.callback(`Detail Fitur`, `btn_oca_feat_${key}`)]);
+    }
+    if (pkg.pricing) {
+        buttons.push([Markup.button.callback(`Harga Paket IndiBiz x OCA`, `btn_oca_price_${key}`)]);
     }
     buttons.push([
         Markup.button.callback("⬅ Kembali ke OCA", "btn_oca"),
-        Markup.button.callback("Menu Utama", "btn_back")
     ]);
-    await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
+    await replyWithMediaOrText(ctx, pkg.detail, buttons, pkg.image);
 };
 
 const showOcaPackageFeatures = async (ctx, key) => {
@@ -50,10 +52,22 @@ const showOcaPackageFeatures = async (ctx, key) => {
 
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("⬅ Kembali ke Produk", `btn_oca_${key}`)],
+        [Markup.button.callback("Kembali", `btn_oca_${key}`)],
         [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
     ];
-    await replyWithMediaOrText(ctx, pkg.features, buttons, null);
+    await replyWithMediaOrText(ctx, pkg.features, buttons, pkg.image);
+};
+
+const showOcaPackagePricing = async (ctx, key) => {
+    const pkg = ocaData.packages[key];
+    if (!pkg || !pkg.pricing) return ctx.answerCbQuery("Informasi harga tidak ditemukan");
+
+    await ctx.answerCbQuery();
+    const buttons = [
+        [Markup.button.callback("Kembali", `btn_oca_${key}`)],
+        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
+    ];
+    await replyWithMediaOrText(ctx, pkg.pricing, buttons, pkg.pricing_image || pkg.image);
 };
 
 module.exports = {
@@ -61,5 +75,6 @@ module.exports = {
 
     showOcaTerms,
     showOcaPackageDetail,
-    showOcaPackageFeatures
+    showOcaPackageFeatures,
+    showOcaPackagePricing
 };

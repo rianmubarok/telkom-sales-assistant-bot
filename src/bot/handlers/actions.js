@@ -11,7 +11,8 @@ const {
     showOcaPackageTypes,
     showOcaTerms,
     showOcaPackageDetail,
-    showOcaPackageFeatures
+    showOcaPackageFeatures,
+    showOcaPackagePricing
 } = require("./products/oca");
 
 const {
@@ -57,6 +58,7 @@ module.exports = (bot) => {
 
     bot.action("btn_oca_interaction", (ctx) => showOcaPackageDetail(ctx, "interaction"));
     bot.action("btn_oca_feat_interaction", (ctx) => showOcaPackageFeatures(ctx, "interaction"));
+    bot.action("btn_oca_price_interaction", (ctx) => showOcaPackagePricing(ctx, "interaction"));
     bot.action("btn_oca_blast", (ctx) => showOcaPackageDetail(ctx, "blast"));
     bot.action("btn_oca_breach", (ctx) => showOcaPackageDetail(ctx, "breach_checker"));
 
@@ -108,6 +110,27 @@ module.exports = (bot) => {
             "*Silakan pilih kategori layanan yang Anda inginkan:*",
             buttons
         );
+    });
+
+    // PDF Document Actions
+    bot.action(/^doc_(.+)$/, async (ctx) => {
+        const docName = ctx.match[1];
+        const path = require('path');
+        const fs = require('fs');
+        const filePath = path.join(__dirname, `../../assets/proposal/${docName}.pdf`);
+
+        try {
+            await ctx.answerCbQuery("Mengirim dokumen proposal...");
+
+            if (fs.existsSync(filePath)) {
+                await ctx.replyWithDocument({ source: filePath });
+            } else {
+                await ctx.reply("Maaf, dokumen proposal belum tersedia untuk saat ini.");
+            }
+        } catch (error) {
+            console.error("Error sending document:", error);
+            await ctx.reply("Terjadi kesalahan saat mencoba mengirim dokumen.");
+        }
     });
 
     // FAQ Actions

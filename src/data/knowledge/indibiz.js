@@ -15,8 +15,12 @@ Ekosistem solusi digital dari Telkom Indonesia yang dirancang khusus untuk mendu
 • Bundling solusi digital (CCTV).
 
 *Pilihan Paket IndiBiz*
-1️⃣ *Paket Basic*: Solusi internet hemat tanpa FUP untuk usaha rintisan/SME.
-2️⃣ *Paket Bisnis*: Internet dengan performa lebih tinggi dan stabil untuk kebutuhan operasional intensif.
+
+1. *Paket Basic*: Solusi internet hemat tanpa FUP untuk usaha rintisan/SME.
+Rasio Kecepatan 1:2 (Upload:Download)
+
+2. *Paket Bisnis*: Internet dengan performa lebih tinggi dan stabil untuk kebutuhan operasional intensif.
+Rasio Kecepatan 1:1 (Upload:Download)
 `,
 
     packages: {
@@ -27,14 +31,14 @@ Ekosistem solusi digital dari Telkom Indonesia yang dirancang khusus untuk mendu
             detail: `
 *Daftar Harga Paket Basic*
 
-• *50 Mbps:* Rp320.000/bulan
-• *75 Mbps:* Rp365.000/bulan
-• *100 Mbps:* Rp440.000/bulan
-• *150 Mbps:* Rp540.000/bulan
-• *200 Mbps:* Rp675.000/bulan
-• *300 Mbps:* Rp950.000/bulan
+• *50 Mbps:* Rp 320.000/bulan
+• *75 Mbps:* Rp 365.000/bulan
+• *100 Mbps:* Rp 440.000/bulan
+• *150 Mbps:* Rp 540.000/bulan
+• *200 Mbps:* Rp 675.000/bulan
+• *300 Mbps:* Rp 950.000/bulan
 
-*Syarat & Ketentuan IndiBiz*
+*Syarat & Ketentuan*
 1. Harga belum termasuk PPN 11%.
 2. Biaya Pasang Baru (PSB) Rp150.000 dibayarkan di awal saat instalasi.
 3. Layanan khusus untuk segmen bisnis/badan usaha.
@@ -55,7 +59,7 @@ Ekosistem solusi digital dari Telkom Indonesia yang dirancang khusus untuk mendu
 • *200 Mbps:* Rp790.000/bulan
 • *300 Mbps:* Rp1.130.000/bulan
 
-*Syarat & Ketentuan IndiBiz*
+*Syarat & Ketentuan*
 1. Harga belum termasuk PPN 11%.
 2. Biaya Pasang Baru (PSB) Rp150.000 dibayarkan di awal saat instalasi.
 3. Layanan khusus untuk segmen bisnis/badan usaha.

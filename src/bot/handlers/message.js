@@ -41,6 +41,8 @@ module.exports = async (ctx) => {
         "*Layanan Publik & IndiBiz:*\n" +
         "• Call Center 24 Jam: 147 (Telkom / Umum)\n" +
         "• Call Center IndiBiz: 1500-250 / 0800-1-835566\n" +
+        "• Twitter: @TENESA_TELKOM\n" +
+        "• Telegram: Tenesa_Telkom_Bot\n" +
         "• WhatsApp IndiBiz: 0812-5888-1915 / 0812-8323-5566\n" +
         "• Email: indibizID.care@telkom.co.id\n\n" +
         "*OCA Indonesia (Omnichannel):*\n" +
@@ -64,11 +66,22 @@ module.exports = async (ctx) => {
         }
       );
 
-    case "❓ bantuan":
+    case "📄 proposal prodigi":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "💡 *Panduan Penggunaan Telkom Bot*\n\nBot ini dirancang untuk membantu Anda menemukan informasi layanan Telkom dengan mudah.\n\n*1. 🌐 Lihat Layanan*\nTekan tombol ini untuk melihat katalog lengkap layanan kami beserta detail paketnya.\n\n*2. 📞 Kontak Admin*\nInformasi alamat kantor Telkom Jepara dan nomor layanan pelanggan.\n\n*3. 💬 Chat Langsung (AI)*\nAnda bisa langsung mengetik pertanyaan apa saja! Bot didukung oleh AI cerdas yang siap menjawab kebutuhan Anda.\n\n*4. ❓ Bantuan*\nMenampilkan pesan panduan ini kembali.",
-        { parse_mode: "Markdown" }
+        "📄 *Proposal Produk PRODIGI Telkom*\n\n" +
+        "Pilih dokumen proposal atau presentasi layanan PRODIGI yang ingin Anda unduh:",
+        {
+          parse_mode: "Markdown",
+          ...Markup.inlineKeyboard([
+            [Markup.button.callback("OCA Interaction Lite", "doc_oca_interaction_lite")],
+            [Markup.button.callback("OCA Blast Lite", "doc_oca_blast_lite")],
+            [Markup.button.callback("OCA Breaker", "doc_oca_breaker")],
+            [Markup.button.callback("Pijar Sekolah", "doc_pijar_sekolah")],
+            [Markup.button.callback("Netmonk Monitoring", "doc_netmonk")],
+            [Markup.button.callback("Antares Eazy Cam", "doc_antares_eazy")]
+          ])
+        }
       );
 
     case "❓ faq":
@@ -152,7 +165,7 @@ module.exports = async (ctx) => {
   // FALLBACK
 
   return ctx.reply(
-    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* untuk cek paket resmi tanpa AI.\n\nKetik *❓ bantuan* untuk panduan lengkap.",
+    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* untuk cek paket resmi tanpa AI.",
     { parse_mode: "Markdown" }
   );
 };
