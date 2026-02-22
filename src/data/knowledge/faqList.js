@@ -5,7 +5,7 @@ const faq = [
     },
     {
         question: "Berapa biaya pasang baru (PSB) yang diinfokan ke pelanggan?",
-        answer: "Biaya PSB IndiBiz reguler saat ini adalah Rp150.000 (belum termasuk PPN 11%). Biaya ini dibayarkan satu kali pada bulan pertama bersamaan dengan tagihan bulan pertama berlangganan."
+        answer: "Biaya PSB IndiBiz reguler saat ini adalah Rp 150.000 (belum termasuk PPN 11%). Biaya ini dibayarkan satu kali pada bulan pertama bersamaan dengan tagihan bulan pertama berlangganan."
     },
     {
         question: "Apa selling point utama IndiBiz ke B2B/UMKM?",

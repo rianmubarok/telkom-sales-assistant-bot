@@ -84,6 +84,16 @@ module.exports = async (ctx) => {
         }
       );
 
+    case "🌟 testimoni prodigi":
+    case "testimoni prodigi":
+      await ctx.sendChatAction("typing");
+      return ctx.reply(
+        "🌟 *Testimoni Layanan PRODIGI*\n\n" +
+        "Banyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital **PRODIGI Telkom**.\n\n" +
+        "_(Katalog testimoni masih dalam tahap penyusunan. Silakan hubungi Admin untuk informasi lebih detail tentang portfolio klien kami.)_",
+        { parse_mode: "Markdown" }
+      );
+
     case "❓ faq":
     case "💬 faq": // handle typo or alternative
       await ctx.sendChatAction("typing");

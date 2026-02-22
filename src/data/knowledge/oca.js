@@ -63,7 +63,7 @@ Dashboard terpadu untuk mengelola seluruh social media dalam satu pintu. Diranca
 • *150 Mbps:* Rp 902.950/bulan
 
 _Add-on OCA Interaction Lite Rp 108.000. Melalui order di SC-ONE dan My Indibiz._
-_Biaya Pasang Baru (PSB) untuk Layanan Indibiz add-on sebesar Rp0._
+_Biaya Pasang Baru (PSB) untuk Layanan Indibiz add-on sebesar Rp 0._
 
 *Syarat & Ketentuan*
 1. Biaya belum termasuk PPN.
@@ -77,7 +77,7 @@ _Biaya Pasang Baru (PSB) untuk Layanan Indibiz add-on sebesar Rp0._
 
 *1. Interaction Lite*
 Paket ini ditujukan untuk UMKM seperti online shop, bimbel, atau koperasi.
-• *Harga mulai:* Rp108.000,-
+• *Harga mulai:* Rp 108.000,-
 • *Lisensi agen:* 1 lisensi
 • *Metode pembelian:* Bundling dengan layanan Indibiz
 • *Integrasi channel:* Terbatas (Facebook, Instagram, TikTok Seller)
@@ -87,7 +87,7 @@ Paket ini ditujukan untuk UMKM seperti online shop, bimbel, atau koperasi.
 
 *2. Interaction Lite+*
 Ditujukan untuk perusahaan menengah (Medium Enterprise) yang butuh fleksibilitas lebih.
-• *Harga mulai:* Rp600.000,-
+• *Harga mulai:* Rp 600.000,-
 • *Lisensi agen:* Unlimited +1
 • *Metode pembelian:* Melalui NCX
 • *Integrasi channel:* Menengah (termasuk WhatsApp & Telegram)
@@ -97,7 +97,7 @@ Ditujukan untuk perusahaan menengah (Medium Enterprise) yang butuh fleksibilitas
 
 *3. Interaction (Standar)*
 Dirancang untuk perusahaan besar dan instansi pemerintahan.
-• *Harga mulai:* Rp1.399.000,-
+• *Harga mulai:* Rp 1.399.000,-
 • *Lisensi agen:* Unlimited +1
 • *Metode pembelian:* Melalui NCX
 • *Integrasi channel:* Lengkap (termasuk Call & Email)
@@ -116,7 +116,7 @@ Dirancang untuk perusahaan besar dan instansi pemerintahan.
 • Paket standar memiliki laporan yang lebih lengkap, termasuk Ticketing, Chatbot, dan Survey Report.
 
 3. *Fitur Tambahan (Add-On)*
-Paket Interaction Lite bisa ditingkatkan dengan add-on seperti Unlimited Social Media, Unlimited Label, dan Ticketing System. Biaya add-on berkisar Rp91.000 – Rp353.000 per bulan.
+Paket Interaction Lite bisa ditingkatkan dengan add-on seperti Unlimited Social Media, Unlimited Label, dan Ticketing System. Biaya add-on berkisar Rp 91.000 – Rp 353.000 per bulan.
 `
         },
         blast: {

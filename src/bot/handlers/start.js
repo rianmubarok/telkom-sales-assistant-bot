@@ -10,6 +10,7 @@ module.exports = async (ctx) => {
       ...Markup.keyboard([
         ["🌐 Lihat Layanan", "💬 FAQ"],
         ["📞 Kontak Admin", "📄 Proposal PRODIGI"],
+        ["🌟 Testimoni PRODIGI"]
       ])
         .resize()
         .oneTime(false)
