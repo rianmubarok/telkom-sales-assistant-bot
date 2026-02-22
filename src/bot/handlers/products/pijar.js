@@ -9,7 +9,6 @@ const showPijarMenu = async (ctx) => {
         [Markup.button.callback(pijarData.packages.basic_platform.name, "btn_pijar_single")],
         [Markup.button.callback(pijarData.packages.connectivity_bundle.name, "btn_pijar_bundling")],
         [Markup.button.callback("Informasi Harga", "btn_pijar_terms")],
-        [Markup.button.callback("Kontak Bantuan & Layanan", "btn_pijar_contact")],
         [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
     ];
 
@@ -59,19 +58,9 @@ const showPijarPackageDetail = async (ctx, key) => {
     await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
 };
 
-const showPijarContact = async (ctx) => {
-    await ctx.answerCbQuery();
-    const contactInfo = pijarData.contact;
-    const buttons = [
-        [Markup.button.callback("⬅ Kembali ke Pijar", "btn_pijar")],
-    ];
-    await replyWithMediaOrText(ctx, contactInfo, buttons, null);
-}
-
 module.exports = {
     showPijarMenu,
     showPijarPackageTypes,
     showPijarTerms,
-    showPijarPackageDetail,
-    showPijarContact
+    showPijarPackageDetail
 };

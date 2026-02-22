@@ -32,12 +32,7 @@ Digitalisasi absen, rapor (E-Rapor), jadwal pelajaran, hingga administrasi sekol
 4️⃣ *Dashboard Monitoring*
 Laporan perkembangan belajar siswa secara real-time yang dapat diakses oleh guru dan kepala sekolah.
 `,
-    contact: `
-*Kontak Bantuan Pijar Sekolah:*
 
-📱 *WhatsApp (Chat Only):* [+62 812-8899-9576](https://wa.me/6281288999576)
-📧 *Email:* support@pijarsekolah.id
-`,
     package_intro: `
 *Pilihan Paket Pijar Sekolah*
 

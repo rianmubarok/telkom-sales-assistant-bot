@@ -20,20 +20,16 @@ module.exports = async (ctx) => {
   // MENU SECTION
 
   switch (message) {
-    case "📦 lihat daftar produk":
-    case "📦 daftar produk":
+    case "🌐 lihat layanan":
+    case "🌐 layanan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "*Silakan pilih layanan yang ingin Anda ketahui:*",
+        "*Silakan pilih kategori layanan yang Anda inginkan:*",
         {
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
-            [Markup.button.callback("IndiHome", "btn_indihome")],
-            [Markup.button.callback("IndiBiz", "btn_indibiz")],
-            [Markup.button.callback("OCA Indonesia", "btn_oca")],
-            [Markup.button.callback("Pijar Sekolah", "btn_pijar")],
-            [Markup.button.callback("Netmonk", "btn_netmonk")],
-            [Markup.button.callback("Antares Eazy", "btn_eazy")],
+            [Markup.button.callback("Internet (IndiBiz)", "btn_indibiz")],
+            [Markup.button.callback("PRODIGI (OCA, Pijar, Netmonk, Eazy)", "btn_cat_prodigi")],
           ]),
         }
       );
@@ -41,16 +37,37 @@ module.exports = async (ctx) => {
     case "📞 kontak admin":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "📞 *Kontak Layanan Telkom Group*\n\nSilakan hubungi layanan resmi kami:\n\n☎️ *Call Center 24 Jam:*\n• 147 (Telkom Indonesia)\n• 188 (IndiHome / Telkomsel)\n• 1500-250 (Indibiz)\n\n📍 *Kunjungan Langsung (Telkom Jepara):*\nJl. Pemuda No.3, Potroyudan XI, Potroyudan\nKec. Jepara, Kabupaten Jepara, Jawa Tengah 59412\n\n📞 *Telepon:* 0800 1835566",
+        "📞 *Kontak Pusat Bantuan & Layanan Telkom Group*\n\n" +
+        "*Layanan Publik & IndiBiz:*\n" +
+        "• Call Center 24 Jam: 147 (Telkom / Umum)\n" +
+        "• Call Center IndiBiz: 1500-250 / 0800-1-835566\n" +
+        "• WhatsApp IndiBiz: 0812-5888-1915 / 0812-8323-5566\n" +
+        "• Email: indibizID.care@telkom.co.id\n\n" +
+        "*OCA Indonesia (Omnichannel):*\n" +
+        "• Email Support: cs@ocatelkom.co.id\n" +
+        "• Helpdesk: Live Chat via ocaindonesia.co.id\n\n" +
+        "*Pijar Sekolah:*\n" +
+        "• WhatsApp Chat: +62 812-8899-9576\n" +
+        "• Email: support@pijarsekolah.id\n\n" +
+        "*Netmonk (Monitoring):*\n" +
+        "• WhatsApp Support: +62 811-1720-237\n" +
+        "• Help Center: netmonk.id/helpcenter/contact-us\n\n" +
+        "*Antares Eazy / Eazy Cam:*\n" +
+        "• Call Center Antares: 188\n\n" +
+        "*Kunjungan Langsung (Telkom Jepara):*\n" +
+        "Jl. Pemuda No.3, Potroyudan XI, Potroyudan\n" +
+        "Kec. Jepara, Kabupaten Jepara, Jawa Tengah 59412\n" +
+        "*Telepon:* 0800 1835566",
         {
           parse_mode: "Markdown",
+          disable_web_page_preview: true
         }
       );
 
     case "❓ bantuan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "💡 *Panduan Penggunaan Telkom Bot*\n\nBot ini dirancang untuk membantu Anda menemukan informasi layanan Telkom dengan mudah.\n\n*1. 📦 Daftar Produk*\nTekan tombol ini untuk melihat katalog lengkap layanan kami (IndiHome, IndiBiz, Pijar, dll) beserta detail paketnya.\n\n*2. 📞 Kontak Admin*\nInformasi alamat kantor Telkom Jepara dan nomor layanan pelanggan.\n\n*3. 💬 Chat Langsung (AI)*\nAnda bisa langsung mengetik pertanyaan apa saja! Bot didukung oleh AI cerdas yang siap menjawab kebutuhan Anda.\n\n*4. ❓ Bantuan*\nMenampilkan pesan panduan ini kembali.",
+        "💡 *Panduan Penggunaan Telkom Bot*\n\nBot ini dirancang untuk membantu Anda menemukan informasi layanan Telkom dengan mudah.\n\n*1. 🌐 Lihat Layanan*\nTekan tombol ini untuk melihat katalog lengkap layanan kami beserta detail paketnya.\n\n*2. 📞 Kontak Admin*\nInformasi alamat kantor Telkom Jepara dan nomor layanan pelanggan.\n\n*3. 💬 Chat Langsung (AI)*\nAnda bisa langsung mengetik pertanyaan apa saja! Bot didukung oleh AI cerdas yang siap menjawab kebutuhan Anda.\n\n*4. ❓ Bantuan*\nMenampilkan pesan panduan ini kembali.",
         { parse_mode: "Markdown" }
       );
 
@@ -135,7 +152,7 @@ module.exports = async (ctx) => {
   // FALLBACK
 
   return ctx.reply(
-    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *📦 Daftar Produk* untuk cek paket resmi tanpa AI.\n\nKetik *❓ bantuan* untuk panduan lengkap.",
+    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* untuk cek paket resmi tanpa AI.\n\nKetik *❓ bantuan* untuk panduan lengkap.",
     { parse_mode: "Markdown" }
   );
 };

@@ -18,12 +18,7 @@ Solusi monitoring infrastruktur IT berbasis di Indonesia yang membantu bisnis me
 
 Netmonk memberikan notifikasi proaktif sebelum gangguan terjadi, sehingga tim IT dapat melakukan penanganan lebih cepat untuk menjaga kelangsungan operasional bisnis.
 `,
-    contact: `
-*Kontak Bantuan Netmonk:*
 
-📱 *WhatsApp Support:* [+62 811-1720-237](https://wa.me/628111720237)
-🌐 *Help Center:* [netmonk.id/helpcenter/contact-us](https://netmonk.id/helpcenter/contact-us)
-`,
     package_intro: `
 *Produk Utama Netmonk*
 

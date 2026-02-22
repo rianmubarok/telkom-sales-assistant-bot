@@ -8,7 +8,7 @@ module.exports = async (ctx) => {
     {
       parse_mode: "Markdown",
       ...Markup.keyboard([
-        ["📦 Lihat Daftar Produk", "💬 FAQ"],
+        ["🌐 Lihat Layanan", "💬 FAQ"],
         ["📞 Kontak Admin", "❓ Bantuan"],
       ])
         .resize()

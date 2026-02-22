@@ -7,7 +7,6 @@ const showNetmonkMenu = async (ctx) => {
     const buttons = [
         [Markup.button.callback("Lihat Produk", "btn_netmonk_packages")],
         [Markup.button.callback("Informasi Berlangganan", "btn_netmonk_terms")],
-        [Markup.button.callback("Kontak Bantuan & Layanan", "btn_netmonk_contact")],
         [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
     ];
 
@@ -56,19 +55,9 @@ const showNetmonkPackageDetail = async (ctx, key) => {
     await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
 };
 
-const showNetmonkContact = async (ctx) => {
-    await ctx.answerCbQuery();
-    const contactInfo = netmonkData.contact;
-    const buttons = [
-        [Markup.button.callback("⬅ Kembali ke Netmonk", "btn_netmonk")],
-    ];
-    await replyWithMediaOrText(ctx, contactInfo, buttons, null);
-}
-
 module.exports = {
     showNetmonkMenu,
     showNetmonkPackageTypes,
     showNetmonkTerms,
-    showNetmonkPackageDetail,
-    showNetmonkContact
+    showNetmonkPackageDetail
 };

@@ -23,13 +23,7 @@ Solusi cerdas keamanan berbasis AIoT dari Telkom Indonesia. Eazy Cam mengintegra
 • *Dual Connection:* Varian tertentu mendukung koneksi LAN Port untuk stabilitas tanpa Wi-Fi.
 • *Two-Way Audio:* Komunikasi dua arah langsung melalui Eazy App.
 `,
-    contact: `
-*Kontak Bantuan & Layanan Resmi EazyCam:*
 
-📞 *Layanan Umum (Indibiz):* 1500250
-📞 *Layanan IndiHome:* 188
-🌐 *Website Resmi:* eazy.co.id
-`,
     package_intro: `
 *Pilihan Layanan Eazy Cam*
 

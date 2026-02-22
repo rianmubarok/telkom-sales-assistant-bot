@@ -5,9 +5,9 @@ const ocaData = require("../../../data/knowledge/oca");
 const showOcaMenu = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("Lihat Produk & Fitur", "btn_oca_packages")],
-        [Markup.button.callback("Informasi Berlangganan", "btn_oca_terms")],
-        [Markup.button.callback("Kontak Bantuan & Layanan", "btn_oca_contact")],
+        [Markup.button.callback(ocaData.packages.interaction.name, "btn_oca_interaction")],
+        [Markup.button.callback(ocaData.packages.blast.name, "btn_oca_blast")],
+        [Markup.button.callback(ocaData.packages.breach_checker.name, "btn_oca_breach")],
         [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
     ];
 
@@ -19,23 +19,6 @@ const showOcaMenu = async (ctx) => {
     );
 };
 
-const showOcaPackageTypes = async (ctx) => {
-    await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback(ocaData.packages.interaction.name, "btn_oca_interaction")],
-        [Markup.button.callback(ocaData.packages.blast.name, "btn_oca_blast")],
-        [Markup.button.callback(ocaData.packages.ai.name, "btn_oca_ai")],
-        [Markup.button.callback(ocaData.packages.breach_checker.name, "btn_oca_breach")],
-        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
-    ];
-
-    await replyWithMediaOrText(
-        ctx,
-        ocaData.package_intro,
-        buttons,
-        null
-    );
-};
 
 const showOcaTerms = async (ctx) => {
     await ctx.answerCbQuery();
@@ -50,26 +33,33 @@ const showOcaPackageDetail = async (ctx, key) => {
     if (!pkg) return ctx.answerCbQuery("Paket tidak ditemukan");
 
     await ctx.answerCbQuery();
-    const buttons = [
-        [Markup.button.callback("⬅ Pilihan Produk", "btn_oca_packages")],
-        [Markup.button.callback("Menu Utama", "btn_back")],
-    ];
+    const buttons = [];
+    if (pkg.features) {
+        buttons.push([Markup.button.callback(`💡 Lihat Fitur ${pkg.name}`, `btn_oca_feat_${key}`)]);
+    }
+    buttons.push([
+        Markup.button.callback("⬅ Kembali ke OCA", "btn_oca"),
+        Markup.button.callback("Menu Utama", "btn_back")
+    ]);
     await replyWithMediaOrText(ctx, pkg.detail, buttons, null);
 };
 
-const showOcaContact = async (ctx) => {
+const showOcaPackageFeatures = async (ctx, key) => {
+    const pkg = ocaData.packages[key];
+    if (!pkg || !pkg.features) return ctx.answerCbQuery("Fitur tidak ditemukan");
+
     await ctx.answerCbQuery();
-    const contactInfo = ocaData.contact;
     const buttons = [
+        [Markup.button.callback("⬅ Kembali ke Produk", `btn_oca_${key}`)],
         [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
     ];
-    await replyWithMediaOrText(ctx, contactInfo, buttons, null);
-}
+    await replyWithMediaOrText(ctx, pkg.features, buttons, null);
+};
 
 module.exports = {
     showOcaMenu,
-    showOcaPackageTypes,
+
     showOcaTerms,
     showOcaPackageDetail,
-    showOcaContact
+    showOcaPackageFeatures
 };
