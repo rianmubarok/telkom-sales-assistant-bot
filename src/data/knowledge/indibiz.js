@@ -4,7 +4,7 @@ const indibiz = {
     keywords: ["indibiz", "wifi bisnis", "internet bisnis", "umkm"],
     image: path.join(__dirname, "../../assets/images/indibiz/indibiz.jpg"),
     answer: `
-*IndiBiz (Solusi Bisnis)*
+*IndiBiz*
 
 Layanan internet dari Telkom Indonesia yang dirancang khusus untuk kebutuhan bisnis dan usaha kecil menengah (UKM). Dengan IndiBiz, pelaku usaha bisa mendapatkan koneksi internet yang andal, cepat, dan stabil untuk mendukung operasional sehari-hari.
 

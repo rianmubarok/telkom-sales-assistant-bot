@@ -98,7 +98,7 @@ module.exports = (bot) => {
     // Back Button (Main Menu / Categories)
     bot.action("btn_back", async (ctx) => {
         const buttons = [
-            [Markup.button.callback("Internet (IndiBiz)", "btn_indibiz")],
+            [Markup.button.callback("Internet (Basic, Bisnis)", "btn_indibiz")],
             [Markup.button.callback("PRODIGI (OCA, Pijar, Netmonk, Eazy)", "btn_cat_prodigi")],
         ];
         await replyWithMediaOrText(

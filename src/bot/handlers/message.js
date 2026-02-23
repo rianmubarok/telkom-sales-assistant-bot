@@ -28,7 +28,7 @@ module.exports = async (ctx) => {
         {
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
-            [Markup.button.callback("Internet (IndiBiz)", "btn_indibiz")],
+            [Markup.button.callback("Internet (Basic, Bisnis)", "btn_indibiz")],
             [Markup.button.callback("PRODIGI (OCA, Pijar, Netmonk, Eazy)", "btn_cat_prodigi")],
           ]),
         }
