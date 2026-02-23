@@ -41,8 +41,8 @@ module.exports = async (ctx) => {
         "*Layanan Publik & IndiBiz:*\n" +
         "• Call Center 24 Jam: 147 (Telkom / Umum)\n" +
         "• Call Center IndiBiz: 1500-250 / 0800-1-835566\n" +
-        "• Twitter: @TENESA_TELKOM\n" +
-        "• Telegram: Tenesa_Telkom_Bot\n" +
+        "• Twitter: @TENESA\\_TELKOM\n" +
+        "• Telegram: Tenesa\\_Telkom\\_Bot\n" +
         "• WhatsApp IndiBiz: 0812-5888-1915 / 0812-8323-5566\n" +
         "• Email: indibizID.care@telkom.co.id\n\n" +
         "*OCA Indonesia (Omnichannel):*\n" +
