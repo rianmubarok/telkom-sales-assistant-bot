@@ -8,7 +8,6 @@ const {
 
 const {
     showOcaMenu,
-    showOcaPackageTypes,
     showOcaTerms,
     showOcaPackageDetail,
     showOcaPackageFeatures,
@@ -18,7 +17,6 @@ const {
 
 const {
     showPijarMenu,
-    showPijarPackageTypes,
     showPijarTerms,
     showPijarPackageDetail
 } = require("./products/pijar");
@@ -57,15 +55,15 @@ module.exports = (bot) => {
     // OCA Actions
     bot.action("btn_oca_terms", (ctx) => showOcaTerms(ctx));
 
-    bot.action("btn_oca_interaction", (ctx) => showOcaPackageDetail(ctx, "interaction"));
-    bot.action("btn_oca_feat_interaction", (ctx) => showOcaPackageFeatures(ctx, "interaction"));
-    bot.action("btn_oca_price_interaction", (ctx) => showOcaPackagePricing(ctx, "interaction"));
-    bot.action("btn_oca_compare_interaction", (ctx) => showOcaPackageComparison(ctx, "interaction"));
-    bot.action("btn_oca_blast", (ctx) => showOcaPackageDetail(ctx, "blast"));
-    bot.action("btn_oca_breach", (ctx) => showOcaPackageDetail(ctx, "breach_checker"));
+    bot.action(/^btn_oca_(interaction|blast|breach)$/, (ctx) => {
+        const product = ctx.match[1] === 'breach' ? 'breach_checker' : ctx.match[1];
+        return showOcaPackageDetail(ctx, product);
+    });
+    bot.action(/^btn_oca_feat_(.+)$/, (ctx) => showOcaPackageFeatures(ctx, ctx.match[1]));
+    bot.action(/^btn_oca_price_(.+)$/, (ctx) => showOcaPackagePricing(ctx, ctx.match[1]));
+    bot.action(/^btn_oca_compare_(.+)$/, (ctx) => showOcaPackageComparison(ctx, ctx.match[1]));
 
     // Pijar Actions
-    bot.action("btn_pijar_packages", (ctx) => showPijarPackageTypes(ctx));
     bot.action("btn_pijar_terms", (ctx) => showPijarTerms(ctx));
     bot.action("btn_pijar_single", (ctx) => showPijarPackageDetail(ctx, "basic_platform"));
     bot.action("btn_pijar_bundling", (ctx) => showPijarPackageDetail(ctx, "connectivity_bundle"));
@@ -92,7 +90,7 @@ module.exports = (bot) => {
             [Markup.button.callback("Pijar Sekolah", "btn_pijar")],
             [Markup.button.callback("Netmonk", "btn_netmonk")],
             [Markup.button.callback("Antares Eazy", "btn_eazy")],
-            [Markup.button.callback("⬅️ Kembali ke Kategori", "btn_back")]
+            [Markup.button.callback("⬅ Kembali", "btn_back")]
         ];
         await replyWithMediaOrText(
             ctx,

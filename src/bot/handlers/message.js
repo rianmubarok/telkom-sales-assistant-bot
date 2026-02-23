@@ -46,13 +46,16 @@ module.exports = async (ctx) => {
         "• WhatsApp IndiBiz: 0812-5888-1915 / 0812-8323-5566\n" +
         "• Email: indibizID.care@telkom.co.id\n\n" +
         "*OCA Indonesia (Omnichannel):*\n" +
+        "• Facebook: OCA Indonesia\n" +
+        "• Instagram: @oca.indonesia\n" +
+        "• WhatsApp OCA Information: 0811-1069-1011\n" +
         "• Email Support: cs@ocatelkom.co.id\n" +
         "• Helpdesk: Live Chat via ocaindonesia.co.id\n\n" +
         "*Pijar Sekolah:*\n" +
-        "• WhatsApp Chat: +62 812-8899-9576\n" +
+        "• WhatsApp Chat: 0812-8899-9576\n" +
         "• Email: support@pijarsekolah.id\n\n" +
         "*Netmonk (Monitoring):*\n" +
-        "• WhatsApp Support: +62 811-1720-237\n" +
+        "• WhatsApp Support: 0811-1720-237\n" +
         "• Help Center: netmonk.id/helpcenter/contact-us\n\n" +
         "*Antares Eazy / Eazy Cam:*\n" +
         "• Call Center Antares: 188\n\n" +

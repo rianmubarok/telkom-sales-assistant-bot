@@ -6,7 +6,7 @@ const indibiz = {
     answer: `
 *IndiBiz (Solusi Bisnis)*
 
-Ekosistem solusi digital dari Telkom Indonesia yang dirancang khusus untuk mendukung operasional bisnis UMKM hingga korporasi.
+Layanan internet dari Telkom Indonesia yang dirancang khusus untuk kebutuhan bisnis dan usaha kecil menengah (UKM). Dengan IndiBiz, pelaku usaha bisa mendapatkan koneksi internet yang andal, cepat, dan stabil untuk mendukung operasional sehari-hari.
 
 *Keunggulan IndiBiz:*
 • Internet High Speed **Tanpa FUP** (Tanpa batasan kuota).

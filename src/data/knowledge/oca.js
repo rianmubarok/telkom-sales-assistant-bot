@@ -32,6 +32,7 @@ Layanan keamanan data untuk mendeteksi dan mencegah kebocoran informasi perusaha
             slug: "oca_interaction",
             image: path.join(__dirname, "../../assets/images/oca_interaction_lite.png"),
             pricing_image: path.join(__dirname, "../../assets/images/oca_interaction_lite_price.png"),
+            comparison_image: path.join(__dirname, "../../assets/images/oca_interaction_lite_paket.jpg"),
             detail: `
 *OCA Interaction Lite*
 
@@ -76,65 +77,119 @@ _Biaya Pasang Baru (PSB) untuk Layanan Indibiz add-on sebesar Rp 0._
 *Perbandingan Paket OCA Interaction*
 
 *1. Interaction Lite*
-Paket ini ditujukan untuk UMKM seperti online shop, bimbel, atau koperasi.
-• *Harga mulai:* Rp 108.000,-
-• *Lisensi agen:* 1 lisensi
-• *Metode pembelian:* Bundling dengan layanan Indibiz
-• *Integrasi channel:* Terbatas (Facebook, Instagram, TikTok Seller)
-• *AI Assistant:* Sudah termasuk
-• *Ticketing system:* Tersedia sebagai add-on
-• *Labeling:* 5 label (bisa ditambah via add-on)
+Untuk UMKM dengan kebutuhan dasar CS.
+• *Harga:* Mulai Rp 108.000,-
+• *Agen:* 1 lisensi
+• *Beli:* Bundling Indibiz
+• *Channel:* FB, IG, TikTok Seller
+• *AI Assistant:* Termasuk
+• *Ticketing:* Add-on
+• *Label:* 5 label (bisa add-on)
 
 *2. Interaction Lite+*
-Ditujukan untuk perusahaan menengah (Medium Enterprise) yang butuh fleksibilitas lebih.
-• *Harga mulai:* Rp 600.000,-
-• *Lisensi agen:* Unlimited +1
-• *Metode pembelian:* Melalui NCX
-• *Integrasi channel:* Menengah (termasuk WhatsApp & Telegram)
-• *AI Assistant:* Sudah termasuk
-• *Ticketing system:* Tersedia sebagai add-on
-• *Labeling:* Unlimited
+Untuk bisnis menengah yang butuh channel lebih luas.
+• *Harga:* Mulai Rp 600.000,-
+• *Agen:* Unlimited +1
+• *Beli:* NCX
+• *Channel:* Termasuk WhatsApp & Telegram
+• *AI Assistant:* Termasuk
+• *Ticketing:* Add-on
+• *Label:* Unlimited
 
 *3. Interaction (Standar)*
-Dirancang untuk perusahaan besar dan instansi pemerintahan.
-• *Harga mulai:* Rp 1.399.000,-
-• *Lisensi agen:* Unlimited +1
-• *Metode pembelian:* Melalui NCX
-• *Integrasi channel:* Lengkap (termasuk Call & Email)
-• *AI Assistant:* Sudah termasuk
-• *Ticketing system:* Sudah termasuk
-• *Labeling:* Unlimited
+Untuk perusahaan besar & instansi.
+• *Harga:* Mulai Rp 1.399.000,-
+• *Agen:* Unlimited +1
+• *Beli:* NCX
+• *Channel:* Lengkap (Call & Email)
+• *AI Assistant:* Termasuk
+• *Ticketing:* Termasuk
+• *Label:* Unlimited
 
-*Poin Perbedaan Utama*
-1. *Model Pembelian*
-• Interaction Lite hanya bisa dibeli bundling dengan Indibiz.
-• Interaction Lite+ dan Interaction Standar dibeli melalui NCX.
-
-2. *Kelola Kontak & Laporan*
-• Semua paket memiliki Omnichannel Inbox dan Agent Performance Report.
-• Interaction Lite hanya menyediakan Activity Report.
-• Paket standar memiliki laporan yang lebih lengkap, termasuk Ticketing, Chatbot, dan Survey Report.
-
-3. *Fitur Tambahan (Add-On)*
-Paket Interaction Lite bisa ditingkatkan dengan add-on seperti Unlimited Social Media, Unlimited Label, dan Ticketing System. Biaya add-on berkisar Rp 91.000 – Rp 353.000 per bulan.
+*Catatan Penting*
+• Lite hanya bisa dibeli bundling Indibiz  
+• Lite punya laporan terbatas  
+• Lite bisa upgrade fitur via add-on (Rp 91.000 – Rp 353.000/bulan)
 `
         },
         blast: {
             name: "OCA Blast Lite",
             slug: "oca_blast",
+            image: path.join(__dirname, "../../assets/images/oca_blast_lite.jpg"),
+            pricing_image: path.join(__dirname, "../../assets/images/oca_blast_lite_price.png"),
+            comparison_image: path.join(__dirname, "../../assets/images/oca_blast_lite_paket.jpg"),
             detail: `
 *OCA Blast Lite*
 
-Layanan pesan massal (broadcast) untuk kebutuhan marketing dan notifikasi.
+Layanan untuk mengirimkan pesan massal (broadcast) ke berbagai saluran komunikasi hanya dari satu dashboard. Dirancang bagi bisnis skala kecil agar dapat menjangkau pelanggan secara cepat dan efisien untuk kebutuhan promosi hingga notifikasi penting.
 
-*Fitur:*
-• Penjadwalan pesan
-• Personalisasi nama penerima
-• Analitik performa (pesan terkirim/dibaca)
+*Target:* Bisnis skala kecil (UMKM) seperti online shop, bimbingan belajar, restoran rumahan, dan koperasi.
 
-*Estimasi Harga:*
-• Platform Fee: mulai dari *Rp 549.000 / bulan*
-• *Catatan:* Belum termasuk biaya per pesan (SMS/WhatsApp) sesuai tarif yang berlaku.
+*Ketentuan:* Hanya dapat dibeli melalui paket Bundling Indibiz (tidak dijual terpisah).
+`,
+            features: `
+*Fitur OCA Blast Lite:*
+
+• Multi-Channel Blast: Kirim pesan massal sekaligus melalui saluran WhatsApp, SMS, dan Email.
+
+• Dashboard Overview: Pantau sisa kuota setiap channel, persentase keberhasilan pengiriman, dan riwayat aktivitas blast secara real-time.
+
+• Contact Management: Atur data konsumen secara efektif dan gunakan fitur Group Contact untuk mengirim promo ke kelompok pelanggan tertentu.
+
+• File Management: Atur dan simpan file media kebutuhan broadcast dalam satu folder penyimpanan yang terintegrasi.
+
+• Instant Broadcast: Fitur untuk menyebarkan pesan ke ribuan kontak dalam hitungan detik kapan saja dan di mana saja.
+`,
+            pricing: `
+*Harga Paket Bundling IndiBiz x OCA Blast Lite*
+
+• *50 Mbps:* Rp 623.900/bulan (HSI Bisnis Basic) | Rp 668.900/bulan (HSI Bisnis)
+• *75 Mbps:* Rp 676.900/bulan (HSI Bisnis Basic) | Rp 746.900/bulan (HSI Bisnis)
+• *100 Mbps:* Rp 781.900/bulan (HSI Bisnis Basic) | Rp 891.900/bulan (HSI Bisnis)
+• *150 Mbps:* Rp 916.900/bulan (HSI Bisnis Basic) | Rp 1.036.900/bulan (HSI Bisnis)
+
+_Add-on OCA Blast Lite Rp 263.000. Melalui order di SC-ONE and My Indibiz._
+
+*Fitur Basic (Sudah Termasuk):*
+50 Kuota & 5 Template (WhatsApp, SMS, Email), 1 Contact Group, dan 50MB Storage.
+
+*Syarat & Ketentuan*
+1. Biaya belum termasuk PPN.
+2. Paket aktif / dapat diorder untuk seluruh Regional.
+3. Registrasi dilakukan melalui SC One, NCX EBIS, Landing Page Creator EBIS, atau myIndibiz.
+4. Komponen paket tidak dapat diorder terpisah (ala carte), hanya berlaku dalam penawaran bundling.
+`,
+            comparison: `
+*Perbandingan Paket OCA Blast*
+
+*1. Blast Lite*
+Untuk UMKM dan broadcast sederhana.
+• *Harga:* Mulai Rp 263.000,-
+• *Channel:* SMS & WhatsApp
+• *Quota:* 50 / channel
+• *Template:* 5 (bisa add-on)
+• *Beli:* Bundling Indibiz
+
+*2. Blast Lite+*
+Untuk bisnis menengah dengan satu channel utama.
+• *Harga:* Mulai Rp 900.000,-
+• *Channel:* Pilih 1 (WA / SMS / Email)
+• *Quota:* Sesuai pemakaian
+• *Template:* Unlimited
+• *Beli:* NCX
+
+*3. Blast (Standar)*
+Untuk perusahaan besar & instansi.
+• *Harga:* Mulai Rp 1.800.000,-
+• *Channel:* Omnichannel lengkap (termasuk Call & Email)
+• *Quota:* Sesuai pemakaian
+• *Template:* Unlimited
+• *Beli:* NCX
+
+*Add-On (Lite)*
+• Tambah quota  
+• Unlimited template  
+• Scheduler, API, & storage
 `
         },
 

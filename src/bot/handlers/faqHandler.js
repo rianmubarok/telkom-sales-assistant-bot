@@ -68,7 +68,7 @@ const showFaqAnswer = async (ctx, index) => {
             {
                 parse_mode: "Markdown",
                 ...Markup.inlineKeyboard([
-                    [Markup.button.callback("⬅ Kembali ke Daftar FAQ", `faq_page_${page}`)]
+                    [Markup.button.callback("⬅ Kembali", `faq_page_${page}`)]
                 ])
             }
         );
@@ -79,7 +79,7 @@ const showFaqAnswer = async (ctx, index) => {
             {
                 parse_mode: "Markdown",
                 ...Markup.inlineKeyboard([
-                    [Markup.button.callback("⬅ Kembali ke Daftar FAQ", `faq_page_${page}`)]
+                    [Markup.button.callback("⬅ Kembali", `faq_page_${page}`)]
                 ])
             }
         );

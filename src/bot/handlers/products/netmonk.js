@@ -7,7 +7,7 @@ const showNetmonkMenu = async (ctx) => {
     const buttons = [
         [Markup.button.callback("Lihat Produk", "btn_netmonk_packages")],
         [Markup.button.callback("Informasi Berlangganan", "btn_netmonk_terms")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
+        [Markup.button.callback("⬅ Kembali", "btn_back")],
     ];
 
     await replyWithMediaOrText(
@@ -24,7 +24,7 @@ const showNetmonkPackageTypes = async (ctx) => {
         [Markup.button.callback(netmonkData.packages.prime.name, "btn_netmonk_prime")],
         [Markup.button.callback(netmonkData.packages.hi.name, "btn_netmonk_hi")],
         [Markup.button.callback(netmonkData.packages.enterprise.name, "btn_netmonk_enterprise")],
-        [Markup.button.callback("⬅ Kembali ke Netmonk", "btn_netmonk")],
+        [Markup.button.callback("⬅ Kembali", "btn_netmonk")],
     ];
 
     await replyWithMediaOrText(
@@ -38,7 +38,7 @@ const showNetmonkPackageTypes = async (ctx) => {
 const showNetmonkTerms = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("⬅ Kembali ke Netmonk", "btn_netmonk")],
+        [Markup.button.callback("⬅ Kembali", "btn_netmonk")],
     ];
     await replyWithMediaOrText(ctx, netmonkData.terms, buttons, null);
 };

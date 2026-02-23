@@ -7,7 +7,7 @@ const showIndibizMenu = async (ctx) => {
     const buttons = [
         [Markup.button.callback(indibizData.packages.basic.name, "btn_ib_basic")],
         [Markup.button.callback(indibizData.packages.business.name, "btn_ib_business")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
+        [Markup.button.callback("⬅ Kembali", "btn_back")],
     ];
 
     await replyWithMediaOrText(
@@ -24,7 +24,7 @@ const showIndibizPackageDetail = async (ctx, key) => {
 
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("⬅ Kembali ke IndiBiz", "btn_indibiz")],
+        [Markup.button.callback("⬅ Kembali", "btn_indibiz")],
         [Markup.button.callback("Menu Utama", "btn_back")],
     ];
     await replyWithMediaOrText(ctx, pkg.detail, buttons, pkg.image);

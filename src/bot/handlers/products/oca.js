@@ -8,7 +8,7 @@ const showOcaMenu = async (ctx) => {
         [Markup.button.callback(ocaData.packages.interaction.name, "btn_oca_interaction")],
         [Markup.button.callback(ocaData.packages.blast.name, "btn_oca_blast")],
         [Markup.button.callback(ocaData.packages.breach_checker.name, "btn_oca_breach")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
+        [Markup.button.callback("⬅ Kembali", "btn_back")],
     ];
 
     await replyWithMediaOrText(
@@ -23,7 +23,7 @@ const showOcaMenu = async (ctx) => {
 const showOcaTerms = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
+        [Markup.button.callback("⬅ Kembali", "btn_oca")],
     ];
     await replyWithMediaOrText(ctx, ocaData.terms, buttons, null);
 };
@@ -41,10 +41,11 @@ const showOcaPackageDetail = async (ctx, key) => {
         buttons.push([Markup.button.callback(`Harga Paket IndiBiz x OCA`, `btn_oca_price_${key}`)]);
     }
     if (pkg.comparison) {
-        buttons.push([Markup.button.callback(`Perbandingan Paket Interaction`, `btn_oca_compare_${key}`)]);
+        const compareText = key === 'blast' ? 'Perbandingan Paket Blast' : 'Perbandingan Paket Interaction';
+        buttons.push([Markup.button.callback(compareText, `btn_oca_compare_${key}`)]);
     }
     buttons.push([
-        Markup.button.callback("⬅ Kembali ke OCA", "btn_oca"),
+        Markup.button.callback("⬅ Kembali", "btn_oca"),
     ]);
     await replyWithMediaOrText(ctx, pkg.detail, buttons, pkg.image);
 };
@@ -55,8 +56,8 @@ const showOcaPackageFeatures = async (ctx, key) => {
 
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("Kembali", `btn_oca_${key}`)],
-        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
+        [Markup.button.callback("⬅ Kembali", `btn_oca_${key}`)],
+        [Markup.button.callback("Kembali ke OCA", "btn_oca")],
     ];
     await replyWithMediaOrText(ctx, pkg.features, buttons, pkg.image);
 };
@@ -67,8 +68,8 @@ const showOcaPackagePricing = async (ctx, key) => {
 
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("Kembali", `btn_oca_${key}`)],
-        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
+        [Markup.button.callback("⬅ Kembali", `btn_oca_${key}`)],
+        [Markup.button.callback("Kembali ke OCA", "btn_oca")],
     ];
     await replyWithMediaOrText(ctx, pkg.pricing, buttons, pkg.pricing_image || pkg.image);
 };
@@ -79,10 +80,10 @@ const showOcaPackageComparison = async (ctx, key) => {
 
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("Kembali", `btn_oca_${key}`)],
-        [Markup.button.callback("⬅ Kembali ke OCA", "btn_oca")],
+        [Markup.button.callback("⬅ Kembali", `btn_oca_${key}`)],
+        [Markup.button.callback("Kembali ke OCA", "btn_oca")],
     ];
-    await replyWithMediaOrText(ctx, pkg.comparison, buttons, pkg.image);
+    await replyWithMediaOrText(ctx, pkg.comparison, buttons, pkg.comparison_image || pkg.image);
 };
 
 module.exports = {

@@ -7,7 +7,7 @@ const showEazyMenu = async (ctx) => {
     const buttons = [
         [Markup.button.callback("Lihat Pilihan Paket", "btn_eazy_packages")],
         [Markup.button.callback("Informasi Harga", "btn_eazy_terms")],
-        [Markup.button.callback("⬅ Kembali ke Menu", "btn_back")],
+        [Markup.button.callback("⬅ Kembali", "btn_back")],
     ];
 
     await replyWithMediaOrText(
@@ -24,7 +24,7 @@ const showEazyPackageTypes = async (ctx) => {
         [Markup.button.callback("Beli Perangkat", "btn_eazy_purchase")],
         [Markup.button.callback("Langganan Cloud", "btn_eazy_cloud")],
         [Markup.button.callback("Bundling IndiBiz", "btn_eazy_bundling")],
-        [Markup.button.callback("⬅ Kembali ke Eazy Cam", "btn_eazy")],
+        [Markup.button.callback("⬅ Kembali", "btn_eazy")],
     ];
 
     await replyWithMediaOrText(
@@ -38,7 +38,7 @@ const showEazyPackageTypes = async (ctx) => {
 const showEazyTerms = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
-        [Markup.button.callback("⬅ Kembali ke Eazy Cam", "btn_eazy")],
+        [Markup.button.callback("⬅ Kembali", "btn_eazy")],
     ];
     await replyWithMediaOrText(ctx, eazyData.terms, buttons, null);
 };
