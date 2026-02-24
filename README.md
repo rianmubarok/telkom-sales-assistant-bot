@@ -38,10 +38,10 @@ A comprehensive Telegram Bot system designed for Telkom Jepara, featuring an AI-
 ### 1. Running with PM2 (Recommended for Production)
 The app is pre-configured with PM2 to ensure it stays online and auto-restarts on errors.
 
-#### **A. Cara Cepat (Windows Shortcut)**
-Jika Anda menggunakan Windows, cukup gunakan file yang sudah disediakan:
-- **`JALANKAN_BOT.bat`**: Double-klik untuk menyalakan Bot & CMS.
-- **`HENTIKAN_BOT.bat`**: Double-klik untuk mematikan layanan.
+#### **A. Quick Method (Windows Shortcut)**
+If you are using Windows, simply use the provided file:
+- **`START.bat`**: Double-click to turn on the Bot & CMS.
+- **`STOP.bat`**: Double-click to turn off the service.
 
 #### **B. Via Terminal**
 - **Start Bot & CMS**:
