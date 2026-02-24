@@ -22,7 +22,7 @@ if not exist "node_modules" (
 echo Sedang menjalankan bot dan CMS via PM2...
 echo.
 
-call npm start
+call npm run pm2
 
 echo.
 echo ------------------------------------------
