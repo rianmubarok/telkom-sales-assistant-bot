@@ -2,7 +2,7 @@
 
 A comprehensive Telegram Bot system designed for Telkom Jepara, featuring an AI-powered assistant and a dedicated Admin CMS for real-time content management.
 
-## 🌟 Key Features
+## Key Features
 
 - **AI Assistant (Gemini AI)**: Intelligent responses tailored for Telkom sales teams.
 - **Admin CMS**: Web-based dashboard to manage product pricing, descriptions, and images.
@@ -11,13 +11,13 @@ A comprehensive Telegram Bot system designed for Telkom Jepara, featuring an AI-
 - **Smart Validation**: CMS prevents invalid Markdown that could crash the Telegram Bot.
 - **PM2 Support**: Production-ready process management for 24/7 uptime.
 
-## 📋 Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) (version 18 or newer recommended)
 - Telegram Bot Token [@BotFather](https://t.me/BotFather)
 - [Google Gemini API Key](https://aistudio.google.com/)
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 1. **Clone/Download** the repository to your local PC or Server.
 2. **Install Dependencies**:
@@ -33,11 +33,17 @@ A comprehensive Telegram Bot system designed for Telkom Jepara, featuring an AI-
    PORT=3000
    ```
 
-## 🛠️ Management & Operation
+## Management & Operation
 
 ### 1. Running with PM2 (Recommended for Production)
 The app is pre-configured with PM2 to ensure it stays online and auto-restarts on errors.
 
+#### **A. Cara Cepat (Windows Shortcut)**
+Jika Anda menggunakan Windows, cukup gunakan file yang sudah disediakan:
+- **`JALANKAN_BOT.bat`**: Double-klik untuk menyalakan Bot & CMS.
+- **`HENTIKAN_BOT.bat`**: Double-klik untuk mematikan layanan.
+
+#### **B. Via Terminal**
 - **Start Bot & CMS**:
   ```bash
   npm start
@@ -65,7 +71,7 @@ From here, you can:
 - Upload/Replace product images.
 - Preview how the message will look in Telegram.
 
-## 📂 Project Structure
+## Project Structure
 
 - `src/app.js`: Entry point for both Bot and CMS.
 - `src/bot/`: Telegram Bot logic and handlers.
@@ -75,10 +81,8 @@ From here, you can:
 - `public/uploads/`: Storage for product images.
 - `bot.db`: Main database file (contains your edits).
 
-## 🛡️ Best Practices for Telkom PC Server
+## Best Practices for Telkom PC Server
 - **Auto-start**: It is recommended to use `pm2 startup` and `pm2 save` to ensure the bot restarts if the PC or Server is rebooted.
 - **Internet**: Ensure the PC has stable internet access to reach Telegram API and Gemini AI API.
 - **Backup**: Regularly back up the `bot.db` file to secure your content updates.
 
----
-*Created for Telkom Jepara - 2026*
