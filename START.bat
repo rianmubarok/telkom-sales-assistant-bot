@@ -9,6 +9,16 @@ echo ==========================================
 echo    TELKOM JEPARA BOT - STARTING SERVICE
 echo ==========================================
 echo.
+
+:: Cek apakah folder node_modules ada
+if not exist "node_modules" (
+    echo [INFO] node_modules tidak ditemukan.
+    echo [INFO] Menjalankan npm install, harap tunggu...
+    echo.
+    call npm install
+    echo.
+)
+
 echo Sedang menjalankan bot dan CMS via PM2...
 echo.
 
