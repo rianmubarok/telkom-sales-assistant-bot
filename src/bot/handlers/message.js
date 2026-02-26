@@ -46,7 +46,7 @@ module.exports = async (ctx) => {
     case "📄 proposal prodigi":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "📄 *Proposal Produk PRODIGI Telkom*\n\n" +
+        "*Proposal Produk PRODIGI Telkom*\n\n" +
         "Pilih dokumen proposal atau presentasi layanan PRODIGI yang ingin Anda unduh:",
         {
           parse_mode: "Markdown",
@@ -65,9 +65,8 @@ module.exports = async (ctx) => {
     case "testimoni prodigi":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "🌟 *Testimoni Layanan PRODIGI*\n\n" +
-        "Banyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital *PRODIGI Telkom*.\n" +
-        "Silakan pilih layanan untuk melihat testimoninya:",
+        "*Testimoni Layanan PRODIGI*\n\n" +
+        "Silakan pilih layanan:",
         {
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
