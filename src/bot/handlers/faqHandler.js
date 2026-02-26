@@ -1,10 +1,27 @@
 const { Markup } = require("telegraf");
-const faqList = require("../../data/knowledge/faqList");
+const db = require("../../db/database");
 
 const ITEMS_PER_PAGE = 5;
 
+const parseFaqText = (text) => {
+    if (!text) return [];
+    try {
+        const arr = JSON.parse(text);
+        return arr.map(item => ({
+            question: item.q || "Pertanyaan?",
+            answer: item.a || "Jawaban tidak tersedia."
+        }));
+    } catch (e) {
+        console.error("Gagal parsing FAQ JSON:", e);
+        return [];
+    }
+};
+
 // Helper to generate FAQ menu
-const generateFaqMenu = (page = 0) => {
+const generateFaqMenu = async (page = 0) => {
+    const dbData = await db.getContent('faq_list');
+    const faqList = dbData ? parseFaqText(dbData.text) : [];
+
     const totalPages = Math.ceil(faqList.length / ITEMS_PER_PAGE);
     const start = page * ITEMS_PER_PAGE;
     const end = start + ITEMS_PER_PAGE;
@@ -33,7 +50,7 @@ const generateFaqMenu = (page = 0) => {
 };
 
 const showFaqMenu = async (ctx, page = 0) => {
-    const menu = generateFaqMenu(page);
+    const menu = await generateFaqMenu(page);
     try {
         if (ctx.callbackQuery) {
             await ctx.editMessageText(menu.text, {
@@ -57,6 +74,9 @@ const showFaqMenu = async (ctx, page = 0) => {
 };
 
 const showFaqAnswer = async (ctx, index) => {
+    const dbData = await db.getContent('faq_list');
+    const faqList = dbData ? parseFaqText(dbData.text) : [];
+
     const item = faqList[index];
     if (!item) return ctx.answerCbQuery("Data tidak ditemukan.");
 

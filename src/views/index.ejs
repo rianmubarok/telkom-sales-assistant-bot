@@ -32,7 +32,11 @@
                 </div>
 
                 <% const internetItems=Object.values(contents).filter(item=> item.key.includes('indibiz'));
-                    const prodigiItems = Object.values(contents).filter(item => !item.key.includes('indibiz'));
+                    const prodigiItems = Object.values(contents).filter(item => item.key.includes('oca') ||
+                    item.key.includes('eazy'));
+                    const testimoniItems = Object.values(contents).filter(item => item.key.includes('testimoni'));
+                    const generalItems = Object.values(contents).filter(item => item.key.includes('faq') ||
+                    item.key.includes('kontak'));
                     %>
 
                     <!-- Kategori Internet -->
@@ -146,6 +150,45 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <!-- Kategori Testimoni -->
+                    <div class="mb-5 mt-8 flex items-center gap-2">
+                        <div class="w-1.5 h-6 bg-red-600 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-800">Testimoni</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                        <% testimoniItems.forEach(item=> { %>
+                            <a href="/edit/<%= item.key %>"
+                                class="group glass-panel rounded-2xl p-6 transition-all border border-gray-200 hover:border-red-300 block relative overflow-hidden bg-white hover:bg-gray-50">
+                                <div
+                                    class="absolute top-0 left-0 w-1 h-full bg-red-100 group-hover:bg-red-500 transition-colors">
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 group-hover:text-red-700 transition-colors">
+                                    <%= item.title %>
+                                </h3>
+                            </a>
+                            <% }) %>
+                    </div>
+
+
+                    <!-- Kategori Informasi Umum -->
+                    <div class="mb-5 mt-8 flex items-center gap-2">
+                        <div class="w-1.5 h-6 bg-red-600 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-800">Informasi Umum</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                        <% generalItems.forEach(item=> { %>
+                            <a href="/edit/<%= item.key %>"
+                                class="group glass-panel rounded-2xl p-6 transition-all border border-gray-200 hover:border-red-300 block relative overflow-hidden bg-white hover:bg-gray-50">
+                                <div
+                                    class="absolute top-0 left-0 w-1 h-full bg-gray-200 group-hover:bg-red-500 transition-colors">
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 group-hover:text-red-700 transition-colors">
+                                    <%= item.title %>
+                                </h3>
+                            </a>
+                            <% }) %>
                     </div>
     </main>
 

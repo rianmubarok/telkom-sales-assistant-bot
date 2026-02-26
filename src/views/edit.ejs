@@ -22,86 +22,43 @@
 
             <form action="/update" method="POST" enctype="multipart/form-data" class="p-8">
                 <input type="hidden" name="key" value="<%= item.key %>">
+                <input type="hidden" name="title" value="<%= item.title %>">
 
-                <div class="mb-8 relative group">
-                    <label
-                        class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
-                        Gambar Saat Ini
-                    </label>
-                    <div
-                        class="w-full px-5 py-5 bg-white border border-gray-300 rounded-xl flex flex-col items-center justify-center min-h-[160px] text-center">
-                        <% if (item.image_path) { %>
-                            <img src="<%= item.image_path %>" alt="Current Image"
-                                class="max-h-[600px] w-auto rounded-lg border border-gray-200 mb-4">
-                            <span
-                                class="text-xs text-green-600 font-semibold bg-green-50 px-3 py-1.5 rounded-full border border-green-100">🖼️
-                                Custom Image Terupload</span>
-                            <% } else if (defaultImage) { %>
-                                <img src="<%= defaultImage %>" alt="Default Image"
-                                    class="max-h-[600px] w-auto rounded-lg border border-gray-200 mb-4 opacity-90">
-                                <span
-                                    class="text-xs text-gray-500 font-semibold bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200">📦
-                                    Gambar Default (Bawaan Bot)</span>
-                                <% } else { %>
-                                    <p class="text-sm text-gray-400 italic">Belum ada gambar preview yang tersedia.</p>
-                                    <% } %>
-                    </div>
-                </div>
+                <%- include('components/imageUploader', { item, defaultImage: typeof defaultImage !=='undefined' ?
+                    defaultImage : null }) %>
 
-                <div class="mb-8 relative group items-center">
-                    <label
-                        class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
-                        Ganti Gambar (Opsional)
-                    </label>
-                    <input type="file" name="image" accept="image/*"
-                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl focus:ring-0 focus:border-red-500 font-mono text-sm transition-colors hover:border-gray-400 file:border-0 file:bg-red-50 file:text-red-700 file:px-4 file:py-2 file:rounded-lg file:mr-4 file:font-semibold file:cursor-pointer cursor-pointer">
-                </div>
+                    <% if (item.key==='faq_list' ) { %>
+                        <%- include('components/faqEditor', { item }) %>
+                            <% } else { %>
+                                <div class="mb-8 relative group">
+                                    <label
+                                        class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
+                                        Konten Markdown
+                                    </label>
+                                    <textarea name="text" rows="12"
+                                        class="w-full px-5 py-5 bg-white border border-gray-300 rounded-xl focus:ring-0 focus:border-red-500 font-mono text-sm leading-relaxed text-gray-700 hover:border-gray-400 transition-colors resize-y"
+                                        spellcheck="false"><%= item.text %></textarea>
+                                </div>
+                                <% } %>
 
-                <div class="mb-8 relative group">
-                    <label
-                        class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
-                        Konten Markdown
-                    </label>
-                    <textarea name="text" rows="12"
-                        class="w-full px-5 py-5 bg-white border border-gray-300 rounded-xl focus:ring-0 focus:border-red-500 font-mono text-sm leading-relaxed text-gray-700 hover:border-gray-400 transition-colors resize-y"
-                        spellcheck="false"><%= item.text %></textarea>
-                </div>
+                                    <% if (item.key !=='faq_list' ) { %>
+                                        <%- include('components/markdownPreview', { item }) %>
+                                            <% } %>
 
-                <div class="mb-8 relative group">
-                    <label
-                        class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
-                        Preview (Real-Time markdown format)
-                    </label>
-                    <div id="md-preview"
-                        class="w-full px-5 py-5 min-h-[100px] bg-gray-50 border border-gray-200 rounded-xl text-sm prose prose-sm prose-red max-w-none">
-                        <%- item.htmlPreview %>
-                    </div>
-
-                    <div id="md-warning" class="hidden mt-3 px-4 py-3 bg-red-50 border border-red-200 rounded-lg">
-                        <div class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                                </path>
-                            </svg>
-                            <div id="md-warning-text" class="text-xs text-red-700 font-medium leading-relaxed"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-end gap-3 border-t border-gray-100 pt-6">
-                    <a href="/" id="cancel-btn"
-                        class="bg-white text-gray-600 font-medium py-3 px-6 rounded-xl transition-all border border-gray-300 hover:bg-gray-50">Batalkan</a>
-                    <button type="submit" id="save-btn" disabled
-                        class="bg-gray-900 hover:bg-black text-white font-medium py-3 px-8 rounded-xl transition-all border border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 active:scale-95 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-900">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                        Simpan Perubahan
-                    </button>
-                </div>
+                                                <div class="flex justify-end gap-3 border-t border-gray-100 pt-6">
+                                                    <a href="/" id="cancel-btn"
+                                                        class="bg-white text-gray-600 font-medium py-3 px-6 rounded-xl transition-all border border-gray-300 hover:bg-gray-50">Batalkan</a>
+                                                    <button type="submit" id="save-btn" disabled
+                                                        class="bg-gray-900 hover:bg-black text-white font-medium py-3 px-8 rounded-xl transition-all border border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 active:scale-95 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-900">
+                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M5 13l4 4L19 7">
+                                                            </path>
+                                                        </svg>
+                                                        Simpan Perubahan
+                                                    </button>
+                                                </div>
             </form>
         </section>
     </main>
@@ -121,9 +78,75 @@
             const initialText = textarea.value;
             let fileChanged = false;
 
+            const isFaq = !!document.getElementById('faq-container');
+
+            function updateFaqText() {
+                if (!isFaq) return;
+                const qs = document.querySelectorAll('.faq-input-q');
+                const as = document.querySelectorAll('.faq-input-a');
+                let newArr = [];
+                for (let i = 0; i < qs.length; i++) {
+                    const qVal = qs[i].value.trim();
+                    const aVal = as[i].value.trim();
+                    if (qVal || aVal) {
+                        newArr.push({ q: qVal, a: aVal });
+                    }
+                }
+                textarea.value = JSON.stringify(newArr, null, 2);
+                textarea.dispatchEvent(new Event('input'));
+            }
+
+            if (isFaq) {
+                const addBtn = document.getElementById('add-faq');
+                const container = document.getElementById('faq-container');
+
+                addBtn.addEventListener('click', () => {
+                    const div = document.createElement('div');
+                    div.className = 'faq-item bg-white p-5 rounded-xl border border-gray-200 relative group/item hover:border-red-200 transition-colors';
+                    div.innerHTML = `
+                        <button type="button" title="Hapus item ini"
+                            class="remove-faq absolute top-3 right-3 text-gray-400 hover:text-red-600 bg-gray-50 hover:bg-red-50 p-2 rounded-lg flex items-center justify-center transition-all opacity-70 group-hover/item:opacity-100">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                        <div class="mb-4 pr-10">
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide">Pertanyaan</label>
+                            <input type="text" placeholder="Masukkan judul/pertanyaan..." value=""
+                                class="faq-input-q w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-1 focus:ring-red-500 focus:border-red-500 text-sm font-medium transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide">Jawaban</label>
+                            <textarea rows="3" placeholder="Masukkan isi/jawaban... (Mendukung Markdown *Tebal*, _Miring_)"
+                                class="faq-input-a w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-1 focus:ring-red-500 focus:border-red-500 text-sm font-mono leading-relaxed resize-y transition-all"></textarea>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                    updateFaqText();
+                });
+
+                container.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.remove-faq');
+                    if (btn) {
+                        if (confirm('Yakin ingin menghapus baris FAQ ini?')) {
+                            btn.closest('.faq-item').remove();
+                            updateFaqText();
+                        }
+                    }
+                });
+
+                container.addEventListener('input', (e) => {
+                    if (e.target.classList.contains('faq-input-q') || e.target.classList.contains('faq-input-a')) {
+                        updateFaqText();
+                    }
+                });
+            }
+
+            let formHasErrors = false;
+
             function checkChanges() {
                 const textChanged = textarea.value !== initialText;
-                if (textChanged || fileChanged) {
+                if ((textChanged || fileChanged) && !formHasErrors) {
                     saveBtn.disabled = false;
                 } else {
                     saveBtn.disabled = true;
@@ -137,31 +160,75 @@
                 // Escape HTML tags
                 previewText = previewText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-                // Mimic Telegram Markdown parsing
-                previewText = previewText.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
-                previewText = previewText.replace(/_(.*?)_/g, "<em>$1</em>");
-                previewText = previewText.replace(/`(.*?)`/g, "<code class='bg-gray-100 text-red-600 px-1 py-0.5 rounded'>$1</code>");
+                // Mimic Telegram Markdown parsing, ignore escaped characters
+                previewText = previewText.replace(/(?<!\\)\*(.*?)(?<!\\)\*/g, "<strong>$1</strong>");
+                previewText = previewText.replace(/(?<!\\)_(.*?)(?<!\\)_/g, "<em>$1</em>");
+                previewText = previewText.replace(/(?<!\\)`(.*?)(?<!\\)`/g, "<code class='bg-gray-100 text-red-600 px-1 py-0.5 rounded'>$1</code>");
+
+                // Remove escaping backslashes from markdown symbols
+                previewText = previewText.replace(/\\([\*_`])/g, "$1");
 
                 // Handle Enters perfectly
                 previewText = previewText.replace(/\n/g, "<br/>");
 
-                // Render Live preview
-                previewBox.innerHTML = previewText;
-
                 let errors = [];
-                // Telegram Markdown rule validation
-                const asterisksLength = (text.match(/\*/g) || []).length;
-                if (asterisksLength % 2 !== 0) errors.push("Simbol bintang (<code>*</code>) tidak ditutup.");
-                const underscoresLength = (text.match(/_/g) || []).length;
-                if (underscoresLength % 2 !== 0) errors.push("Simbol garis bawah (<code>_</code>) tidak ditutup.");
-                const backticksLength = (text.match(/`/g) || []).length;
-                if (backticksLength % 2 !== 0) errors.push("Simbol backtick (<code>`</code>) tidak ditutup.");
 
-                if (errors.length > 0) {
-                    warningBox.classList.remove('hidden');
-                    warningText.innerHTML = "<strong>⚠️ Simbol tidak lengkap:</strong> " + errors.join(" ");
+                if (isFaq) {
+                    const faqWarningBox = document.getElementById('faq-warning');
+                    try {
+                        const arr = JSON.parse(text);
+                        // Cek apakah ada Pertanyaan atau Jawaban yang kosong
+                        const hasEmpty = arr.some((item, idx) => !item.q.trim() || !item.a.trim());
+                        if (hasEmpty) {
+                            errors.push("Terdapat baris FAQ dengan isian Pertanyaan atau Jawaban yang masih kosong.");
+                        }
+
+                        // Telegram Markdown rule validation pada setiap jawaban
+                        arr.forEach((item, idx) => {
+                            const aText = item.a || "";
+                            // We strip escaped characters first before validating dangling markdown symbols
+                            const strippedATextForValidating = aText.replace(/\\([\*_`])/g, "");
+
+                            if ((strippedATextForValidating.match(/\*/g) || []).length % 2 !== 0) errors.push(`Simbol bintang (<code>*</code>) pada jawaban baris ke-${idx + 1} tidak ditutup.`);
+                            if ((strippedATextForValidating.match(/_/g) || []).length % 2 !== 0) errors.push(`Simbol garis bawah (<code>_</code>) pada jawaban baris ke-${idx + 1} tidak ditutup.`);
+                            if ((strippedATextForValidating.match(/`/g) || []).length % 2 !== 0) errors.push(`Simbol backtick (<code>\`</code>) pada jawaban baris ke-${idx + 1} tidak ditutup.`);
+                        });
+
+                    } catch (e) {
+                        errors.push("Format data tidak valid.");
+                    }
+
+                    if (errors.length > 0) {
+                        formHasErrors = true;
+                        faqWarningBox.classList.remove('hidden');
+                        faqWarningBox.innerHTML = "<strong>⚠️ Perhatian:</strong><br/> • " + errors.join("<br/> • ");
+                    } else {
+                        formHasErrors = false;
+                        faqWarningBox.classList.add('hidden');
+                    }
                 } else {
-                    warningBox.classList.add('hidden');
+                    // Render Live preview
+                    previewBox.innerHTML = previewText;
+
+                    // Telegram Markdown rule validation
+                    // We strip escaped characters first before validating dangling markdown symbols
+                    const strippedTextForValidating = text.replace(/\\([\*_`])/g, "");
+
+                    const asterisksLength = (strippedTextForValidating.match(/\*/g) || []).length;
+                    if (asterisksLength % 2 !== 0) errors.push("Simbol bintang (<code>*</code>) tidak ditutup.");
+                    const underscoresLength = (strippedTextForValidating.match(/_/g) || []).length;
+                    if (underscoresLength % 2 !== 0) errors.push("Simbol garis bawah (<code>_</code>) tidak ditutup.");
+                    const backticksLength = (strippedTextForValidating.match(/`/g) || []).length;
+                    if (backticksLength % 2 !== 0) errors.push("Simbol backtick (<code>`</code>) tidak ditutup.");
+
+                    if (errors.length > 0) {
+                        formHasErrors = true;
+                        warningBox.classList.remove('hidden');
+                        warningText.innerHTML = "<strong>⚠️ Simbol tidak lengkap:</strong> " + errors.join(" ");
+                    } else {
+                        formHasErrors = false;
+                        warningBox.classList.add('hidden');
+                    }
                 }
 
                 checkChanges();

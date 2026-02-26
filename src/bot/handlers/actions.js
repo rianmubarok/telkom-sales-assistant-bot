@@ -121,6 +121,32 @@ module.exports = (bot) => {
         }
     });
 
+    // Testimoni Actions
+    bot.action(/^testi_(pijar|netmonk|oca|eazy)$/, async (ctx) => {
+        await ctx.answerCbQuery();
+        const product = ctx.match[1];
+        const db = require("../../db/database");
+        const testimoniItem = await db.getContent(`testimoni_${product}`);
+
+        let text = testimoniItem ? testimoniItem.text : "Maaf, testimoni belum tersedia.";
+
+        const buttons = [[Markup.button.callback("⬅ Kembali ke Testimoni", "btn_testimoni_menu")]];
+
+        await replyWithMediaOrText(ctx, text, buttons);
+    });
+
+    bot.action("btn_testimoni_menu", async (ctx) => {
+        await ctx.answerCbQuery();
+        const text = "🌟 *Testimoni Layanan PRODIGI*\n\nBanyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital *PRODIGI Telkom*.\nSilakan pilih layanan untuk melihat testimoninya:";
+        const buttons = [
+            [Markup.button.callback("PIJAR Sekolah", "testi_pijar")],
+            [Markup.button.callback("Netmonk Monitoring", "testi_netmonk")],
+            [Markup.button.callback("OCA Indonesia", "testi_oca")],
+            [Markup.button.callback("Antares Eazy Cam", "testi_eazy")]
+        ];
+        await replyWithMediaOrText(ctx, text, buttons);
+    });
+
     // FAQ Actions
     const { showFaqMenu, showFaqAnswer } = require("./faqHandler");
 

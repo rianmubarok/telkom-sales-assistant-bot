@@ -36,38 +36,12 @@ module.exports = async (ctx) => {
 
     case "📞 kontak admin":
       await ctx.sendChatAction("typing");
-      return ctx.reply(
-        "📞 *Kontak Pusat Bantuan & Layanan Telkom Group*\n\n" +
-        "*Layanan Publik & IndiBiz:*\n" +
-        "• Call Center 24 Jam: 147 (Telkom / Umum)\n" +
-        "• Call Center IndiBiz: 1500-250 / 0800-1-835566\n" +
-        "• Twitter: @TENESA\\_TELKOM\n" +
-        "• Telegram: Tenesa\\_Telkom\\_Bot\n" +
-        "• WhatsApp IndiBiz: 0812-5888-1915 / 0812-8323-5566\n" +
-        "• Email: indibizID.care@telkom.co.id\n\n" +
-        "*OCA Indonesia (Omnichannel):*\n" +
-        "• Facebook: OCA Indonesia\n" +
-        "• Instagram: @oca.indonesia\n" +
-        "• WhatsApp OCA Information: 0811-1069-1011\n" +
-        "• Email Support: cs@ocatelkom.co.id\n" +
-        "• Helpdesk: Live Chat via ocaindonesia.co.id\n\n" +
-        "*PIJAR Sekolah:*\n" +
-        "• WhatsApp Chat: 0812-8899-9576\n" +
-        "• Email: support@pijarsekolah.id\n\n" +
-        "*Netmonk (Monitoring):*\n" +
-        "• WhatsApp Support: 0811-1720-237\n" +
-        "• Help Center: netmonk.id/helpcenter/contact-us\n\n" +
-        "*Antares Eazy / Eazy Cam:*\n" +
-        "• Call Center Antares: 188\n\n" +
-        "*Kunjungan Langsung (Telkom Jepara):*\n" +
-        "Jl. Pemuda No.3, Potroyudan XI, Potroyudan\n" +
-        "Kec. Jepara, Kabupaten Jepara, Jawa Tengah 59412\n" +
-        "*Telepon:* 0800 1835566",
-        {
-          parse_mode: "Markdown",
-          disable_web_page_preview: true
-        }
-      );
+      const db = require("../../db/database");
+      const kontakItem = await db.getContent('kontak_admin');
+      return ctx.reply(kontakItem ? kontakItem.text : "Data kontak belum tersedia.", {
+        parse_mode: "Markdown",
+        disable_web_page_preview: true
+      });
 
     case "📄 proposal prodigi":
       await ctx.sendChatAction("typing");
@@ -92,23 +66,17 @@ module.exports = async (ctx) => {
       await ctx.sendChatAction("typing");
       return ctx.reply(
         "🌟 *Testimoni Layanan PRODIGI*\n\n" +
-        "Banyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital *PRODIGI Telkom*.\n\n" +
-        "*PIJAR Sekolah*\n" +
-        "• [Testimoni 1](https://vt.tiktok.com/ZSmmKC7fW/)\n" +
-        "• [Testimoni 2](https://vt.tiktok.com/ZSmmEBKxP/)\n" +
-        "• [Testimoni 3](https://vt.tiktok.com/ZSmmEjwWH/)\n" +
-        "• [Testimoni 4](https://vt.tiktok.com/ZSmu1u593/)\n" +
-        "• [Testimoni 5](https://vt.tiktok.com/ZSmudXPNH/)\n\n" +
-        "*Netmonk*\n" +
-        "• [Testimoni 1](https://vt.tiktok.com/ZSmmEuUXj/)\n\n" +
-        "*OCA*\n" +
-        "• [Testimoni 1](https://vt.tiktok.com/ZSmud6JFr/)\n" +
-        "• [Testimoni 2](https://vt.tiktok.com/ZSmudRKPH/)\n\n" +
-        "*Antares Eazy Cam*\n" +
-        "• [Testimoni 1](https://vt.tiktok.com/ZSmuRU3sR/)\n" +
-        "• [Testimoni 2](https://vt.tiktok.com/ZSmuRXMLT/)\n" +
-        "• [Testimoni 3](https://vt.tiktok.com/ZSmu8sFN1/)",
-        { parse_mode: "Markdown", disable_web_page_preview: true }
+        "Banyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital *PRODIGI Telkom*.\n" +
+        "Silakan pilih layanan untuk melihat testimoninya:",
+        {
+          parse_mode: "Markdown",
+          ...Markup.inlineKeyboard([
+            [Markup.button.callback("PIJAR Sekolah", "testi_pijar")],
+            [Markup.button.callback("Netmonk", "testi_netmonk")],
+            [Markup.button.callback("OCA", "testi_oca")],
+            [Markup.button.callback("Antares Eazy", "testi_eazy")]
+          ])
+        }
       );
 
     case "❓ faq":

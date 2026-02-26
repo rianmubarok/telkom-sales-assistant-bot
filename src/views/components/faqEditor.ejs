@@ -1,0 +1,47 @@
+<div class="mb-4 relative group">
+    <div class="w-full">
+        <div id="faq-container" class="space-y-5">
+            <% if (item.faqArray && item.faqArray.length> 0) { %>
+                <% item.faqArray.forEach((faq, index)=> { %>
+                    <div
+                        class="faq-item bg-white p-5 rounded-xl border border-gray-200 relative group/item hover:border-red-200 transition-colors">
+                        <button type="button" title="Hapus item ini"
+                            class="remove-faq absolute top-3 right-3 text-gray-400 hover:text-red-600 bg-gray-50 hover:bg-red-50 p-2 rounded-lg flex items-center justify-center transition-all opacity-70 group-hover/item:opacity-100">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="mb-4 pr-10">
+                            <label
+                                class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide">Pertanyaan</label>
+                            <input type="text" placeholder="Masukkan judul/pertanyaan..." value="<%= faq.q %>"
+                                class="faq-input-q w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-1 focus:ring-red-500 focus:border-red-500 text-sm font-medium transition-all">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide">Jawaban</label>
+                            <textarea rows="3"
+                                placeholder="Masukkan isi/jawaban... (Mendukung Markdown *Tebal*, _Miring_)"
+                                class="faq-input-a w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-1 focus:ring-red-500 focus:border-red-500 text-sm font-mono leading-relaxed resize-y transition-all"><%= faq.a %></textarea>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } %>
+        </div>
+
+        <button type="button" id="add-faq"
+            class="mt-6 w-full bg-white text-gray-700 border border-gray-300 hover:border-red-300 hover:bg-red-50 hover:text-red-600 font-bold py-3.5 px-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Tambah Baris Baru
+        </button>
+
+        <div id="faq-warning"
+            class="hidden mt-5 px-4 py-3.5 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700 font-medium">
+        </div>
+    </div>
+    <textarea name="text" id="real-faq-text" style="display:none;"><%= item.text %></textarea>
+</div>

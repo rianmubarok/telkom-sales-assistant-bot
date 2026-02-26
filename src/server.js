@@ -53,17 +53,48 @@ app.get('/edit/:key', async (req, res) => {
         // Escape HTML tags to prevent XSS and unwanted rendering
         previewText = previewText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-        // Convert *bold* to <strong>bold</strong>
-        previewText = previewText.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
-        // Convert _italic_ to <em>italic</em>
-        previewText = previewText.replace(/_(.*?)_/g, "<em>$1</em>");
-        // Convert `code` to <code>
-        previewText = previewText.replace(/`(.*?)`/g, "<code class='bg-gray-100 text-red-600 px-1 py-0.5 rounded'>$1</code>");
+        // Convert *bold* to <strong>bold</strong>, ignoring escaped chars
+        previewText = previewText.replace(/(?<!\\)\*(.*?)(?<!\\)\*/g, "<strong>$1</strong>");
+        // Convert _italic_ to <em>italic</em>, ignoring escaped chars
+        previewText = previewText.replace(/(?<!\\)_(.*?)(?<!\\)_/g, "<em>$1</em>");
+        // Convert `code` to <code>, ignoring escaped chars
+        previewText = previewText.replace(/(?<!\\)`(.*?)(?<!\\)`/g, "<code class='bg-gray-100 text-red-600 px-1 py-0.5 rounded'>$1</code>");
+
+        // Remove escaping backslashes from markdown symbols map (\\*, \\_, \\`)
+        previewText = previewText.replace(/\\([\*_`])/g, "$1");
 
         // Handle newlines literally (so enters work exactly like Telegram)
         previewText = previewText.replace(/\n/g, "<br/>");
 
-        item.htmlPreview = previewText;
+        if (key === 'faq_list') {
+            try {
+                item.faqArray = JSON.parse(item.text);
+
+                // MOCK TELEGRAM PREVIEW
+                let mockHtml = `<div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100 flex flex-col gap-3">`;
+                mockHtml += `<div class="text-xs bg-gray-200/50 text-gray-500 font-bold px-3 py-1 rounded-full self-center mb-2">Simulasi Tampilan Bot</div>`;
+
+                item.faqArray.forEach((faq, i) => {
+                    mockHtml += `
+                        <div class="bg-white px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-gray-100 max-w-[90%] self-start relative">
+                            <span class="text-xs font-bold text-blue-600 block mb-1">Pengguna (Pilih Tombol)</span>
+                            <div class="text-sm font-medium text-gray-800">${faq.q}</div>
+                        </div>
+                        <div class="bg-blue-100 px-4 py-3 rounded-2xl rounded-br-sm shadow-sm border border-blue-200 max-w-[90%] self-end relative">
+                            <span class="text-xs font-bold text-red-600 block mb-1">Telkom Bot</span>
+                            <div class="text-sm text-gray-800">${faq.a}</div>
+                        </div>
+                    `;
+                });
+                mockHtml += `</div>`;
+                item.htmlPreview = mockHtml;
+            } catch (e) {
+                item.faqArray = [];
+                item.htmlPreview = `<div class="text-red-500 text-sm">Gagal memuat pratinjau daftar FAQ. Format data tidak valid (Error JSON).</div>`;
+            }
+        } else {
+            item.htmlPreview = previewText;
+        }
 
         // Define default images according to their keys
         let defaultImage = '';

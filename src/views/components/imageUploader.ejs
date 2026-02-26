@@ -1,0 +1,35 @@
+<% if (!item.key.includes('testimoni') && !item.key.includes('kontak') && !item.key.includes('faq')) { %>
+    <div class="mb-8 relative group">
+        <label
+            class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
+            Gambar Saat Ini
+        </label>
+        <div
+            class="w-full px-5 py-5 bg-white border border-gray-300 rounded-xl flex flex-col items-center justify-center min-h-[160px] text-center">
+            <% if (item.image_path) { %>
+                <img src="<%= item.image_path %>" alt="Current Image"
+                    class="max-h-[600px] w-auto rounded-lg border border-gray-200 mb-4">
+                <span
+                    class="text-xs text-green-600 font-semibold bg-green-50 px-3 py-1.5 rounded-full border border-green-100">🖼️
+                    Custom Image Terupload</span>
+                <% } else if (defaultImage) { %>
+                    <img src="<%= defaultImage %>" alt="Default Image"
+                        class="max-h-[600px] w-auto rounded-lg border border-gray-200 mb-4 opacity-90">
+                    <span
+                        class="text-xs text-gray-500 font-semibold bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200">📦
+                        Gambar Default (Bawaan Bot)</span>
+                    <% } else { %>
+                        <p class="text-sm text-gray-400 italic">Belum ada gambar preview yang tersedia.</p>
+                        <% } %>
+        </div>
+    </div>
+
+    <div class="mb-8 relative group items-center">
+        <label
+            class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-red-600 tracking-wider uppercase border border-white rounded-full">
+            Ganti Gambar (Opsional)
+        </label>
+        <input type="file" name="image" accept="image/*"
+            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl focus:ring-0 focus:border-red-500 font-mono text-sm transition-colors hover:border-gray-400 file:border-0 file:bg-red-50 file:text-red-700 file:px-4 file:py-2 file:rounded-lg file:mr-4 file:font-semibold file:cursor-pointer cursor-pointer">
+    </div>
+    <% } %>
