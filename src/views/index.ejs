@@ -32,8 +32,9 @@
                 </div>
 
                 <% const internetItems=Object.values(contents).filter(item=> item.key.includes('indibiz'));
-                    const prodigiItems = Object.values(contents).filter(item => item.key.includes('oca') ||
-                    item.key.includes('eazy'));
+                    const prodigiItems = Object.values(contents).filter(item =>
+                    (item.key.includes('oca') || item.key.includes('eazy')) && !item.key.includes('testimoni')
+                    );
                     const testimoniItems = Object.values(contents).filter(item => item.key.includes('testimoni'));
                     const generalItems = Object.values(contents).filter(item => item.key.includes('faq') ||
                     item.key.includes('kontak'));
@@ -72,7 +73,8 @@
                             <div class="absolute top-0 left-0 w-1 h-full bg-red-500 rounded-l-2xl"></div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4 ml-2">OCA</h3>
                             <div class="flex flex-col gap-2 ml-2 flex-grow">
-                                <% const ocaItems=prodigiItems.filter(i=> i.key.includes('oca')); %>
+                                <% const ocaItems=prodigiItems.filter(i=> i.key.includes('oca') &&
+                                    !i.key.includes('testimoni')); %>
                                     <% if (ocaItems.length> 0) { %>
                                         <% ocaItems.forEach(item=> { %>
                                             <a href="/edit/<%= item.key %>"
@@ -102,7 +104,8 @@
                             <div class="absolute top-0 left-0 w-1 h-full bg-red-500 rounded-l-2xl"></div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4 ml-2">Eazy Cam</h3>
                             <div class="flex flex-col gap-2 ml-2 flex-grow">
-                                <% const eazyItems=prodigiItems.filter(i=> i.key.includes('eazy')); %>
+                                <% const eazyItems=prodigiItems.filter(i=> i.key.includes('eazy') &&
+                                    !i.key.includes('testimoni')); %>
                                     <% if (eazyItems.length> 0) { %>
                                         <% eazyItems.forEach(item=> { %>
                                             <a href="/edit/<%= item.key %>"
