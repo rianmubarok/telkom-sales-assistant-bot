@@ -107,6 +107,10 @@ app.get('/edit/:key', async (req, res) => {
             if (key.includes('interaction')) defaultImage = '/assets/images/oca/oca_interaction_lite_price.jpg';
             else if (key.includes('blast')) defaultImage = '/assets/images/oca/oca_blast_lite_price.jpg';
             else if (key.includes('breaker')) defaultImage = '/assets/images/oca/oca_breaker_price.jpg';
+        } else if (key.includes('netmonk')) {
+            defaultImage = '/assets/images/netmonk/netmonk.jpg';
+        } else if (key.includes('pijar')) {
+            defaultImage = '/assets/images/pijar/pijar.jpg';
         }
 
         res.render('edit', { item, defaultImage });

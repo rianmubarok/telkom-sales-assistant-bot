@@ -17,13 +17,15 @@ const {
 
 const {
     showPijarMenu,
-    showPijarDetail
+    showPijarDetail,
+    showPijarPricing
 } = require("./products/pijar");
 
 const {
     showNetmonkMenu,
     showNetmonkPackageDetail,
-    showNetmonkPackageFeatures
+    showNetmonkPackageFeatures,
+    showNetmonkPricing
 } = require("./products/netmonk");
 
 const {
@@ -62,11 +64,13 @@ module.exports = (bot) => {
 
     // Pijar Actions
     bot.action(/^btn_pijar_(keunggulan|implementasi|sukses)$/, (ctx) => showPijarDetail(ctx, ctx.match[1]));
+    bot.action("btn_pijar_pricing", (ctx) => showPijarPricing(ctx));
 
     // Netmonk Actions
 
     bot.action(/^btn_netmonk_(prime|hi)$/, (ctx) => showNetmonkPackageDetail(ctx, ctx.match[1]));
     bot.action(/^btn_netmonk_feat_(.+)$/, (ctx) => showNetmonkPackageFeatures(ctx, ctx.match[1]));
+    bot.action("btn_netmonk_pricing", (ctx) => showNetmonkPricing(ctx));
 
     // Eazy Cam Actions
     bot.action("btn_eazy_pricing", (ctx) => showEazyPricing(ctx));
@@ -122,7 +126,7 @@ module.exports = (bot) => {
     });
 
     // Testimoni Actions
-    bot.action(/^testi_(pijar|netmonk|oca|eazy)$/, async (ctx) => {
+    bot.action(/^testi_(indibiz|pijar|netmonk|oca|eazy)$/, async (ctx) => {
         await ctx.answerCbQuery();
         const product = ctx.match[1];
         const db = require("../../db/database");
@@ -137,12 +141,13 @@ module.exports = (bot) => {
 
     bot.action("btn_testimoni_menu", async (ctx) => {
         await ctx.answerCbQuery();
-        const text = "🌟 *Testimoni Layanan PRODIGI*\n\nBanyak perusahaan dan instansi yang telah mempercayakan perbaikan proses bisnis mereka menggunakan ekosistem digital *PRODIGI Telkom*.\nSilakan pilih layanan untuk melihat testimoninya:";
+        const text = "🌟 *Testimoni Layanan:*";
         const buttons = [
+            [Markup.button.callback("IndiBiz", "testi_indibiz")],
             [Markup.button.callback("PIJAR Sekolah", "testi_pijar")],
-            [Markup.button.callback("Netmonk Monitoring", "testi_netmonk")],
-            [Markup.button.callback("OCA Indonesia", "testi_oca")],
-            [Markup.button.callback("Antares Eazy Cam", "testi_eazy")]
+            [Markup.button.callback("Netmonk", "testi_netmonk")],
+            [Markup.button.callback("OCA", "testi_oca")],
+            [Markup.button.callback("Antares Eazy", "testi_eazy")]
         ];
         await replyWithMediaOrText(ctx, text, buttons);
     });

@@ -99,11 +99,11 @@ INSTRUKSI KEPADA AI:
 
         // Handle Quota Limit (429) or Server Overload (503)
         if (error.status === 429 || error.message?.includes("429")) {
-            return "⚠️ *Layanan Sedang Sibuk (Limit Kuota)*\n\nMaaf, batas penggunaan AI tercapai. Mohon tunggu sekitar *1 menit*.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* atau *❓ FAQ* untuk melihat informasi langsung.";
+            return "⚠️ *Layanan Sedang Sibuk (Limit Kuota)*\n\nMaaf, batas penggunaan AI tercapai. Mohon tunggu sekitar *1 menit*.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Layanan* atau *❓ FAQ* untuk melihat informasi langsung.";
         }
 
         if (error.status === 503 || error.message?.includes("503")) {
-            return "⚠️ *Server AI Sedang Penuh*\n\nMaaf, server AI sedang sibuk. Mohon coba lagi beberapa saat.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* atau *❓ FAQ* untuk melihat informasi langsung.";
+            return "⚠️ *Server AI Sedang Penuh*\n\nMaaf, server AI sedang sibuk. Mohon coba lagi beberapa saat.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Layanan* atau *❓ FAQ* untuk melihat informasi langsung.";
         }
 
         return null; // Fallback to standard response for other errors

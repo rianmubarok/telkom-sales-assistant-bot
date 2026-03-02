@@ -20,7 +20,6 @@ module.exports = async (ctx) => {
   // MENU SECTION
 
   switch (message) {
-    case "🌐 lihat layanan":
     case "🌐 layanan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
@@ -55,21 +54,21 @@ module.exports = async (ctx) => {
             [Markup.button.callback("OCA Blast Lite", "doc_oca_blast_lite")],
             [Markup.button.callback("OCA Breaker", "doc_oca_breaker")],
             [Markup.button.callback("PIJAR Sekolah", "doc_pijar_sekolah")],
-            [Markup.button.callback("Netmonk Monitoring", "doc_netmonk")],
+            [Markup.button.callback("Netmonk", "doc_netmonk")],
             [Markup.button.callback("Antares Eazy Cam", "doc_antares_eazy")]
           ])
         }
       );
 
-    case "🌟 testimoni prodigi":
-    case "testimoni prodigi":
+    case "🌟 testimoni layanan":
+    case "testimoni layanan":
       await ctx.sendChatAction("typing");
       return ctx.reply(
-        "*Testimoni Layanan PRODIGI*\n\n" +
-        "Silakan pilih layanan:",
+        "🌟 *Testimoni Layanan:*",
         {
           parse_mode: "Markdown",
           ...Markup.inlineKeyboard([
+            [Markup.button.callback("IndiBiz", "testi_indibiz")],
             [Markup.button.callback("PIJAR Sekolah", "testi_pijar")],
             [Markup.button.callback("Netmonk", "testi_netmonk")],
             [Markup.button.callback("OCA", "testi_oca")],
@@ -159,7 +158,7 @@ module.exports = async (ctx) => {
   // FALLBACK
 
   return ctx.reply(
-    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Lihat Layanan* untuk cek paket resmi tanpa AI.",
+    "Maaf, informasi belum tersedia atau saya kurang mengerti.\n\n💡 *Solusi Cepat:* Gunakan menu *🌐 Layanan* untuk cek paket resmi tanpa AI.",
     { parse_mode: "Markdown" }
   );
 };

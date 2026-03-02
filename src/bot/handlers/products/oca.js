@@ -38,7 +38,7 @@ const showOcaPackageDetail = async (ctx, key) => {
     if (pkg.features) {
         buttons.push([Markup.button.callback(`Detail Fitur`, `btn_oca_feat_${key}`)]);
     }
-    if (pkg.pricing) {
+    if (pkg.pricing !== undefined) {
         const priceText = key === 'breach_checker' ? 'Harga' : 'Harga';
         buttons.push([Markup.button.callback(priceText, `btn_oca_price_${key}`)]);
     }
@@ -68,7 +68,7 @@ const showOcaPackageFeatures = async (ctx, key) => {
 
 const showOcaPackagePricing = async (ctx, key) => {
     const pkg = ocaData.packages[key];
-    if (!pkg || !pkg.pricing) return ctx.answerCbQuery("Informasi harga tidak ditemukan");
+    if (!pkg || pkg.pricing === undefined) return ctx.answerCbQuery("Informasi harga tidak ditemukan");
 
     await ctx.answerCbQuery();
 

@@ -31,9 +31,11 @@
                     </div>
                 </div>
 
-                <% const internetItems=Object.values(contents).filter(item=> item.key.includes('indibiz'));
+                <% const internetItems=Object.values(contents).filter(item=> item.key.includes('indibiz') &&
+                    !item.key.includes('testimoni'));
                     const prodigiItems = Object.values(contents).filter(item =>
-                    (item.key.includes('oca') || item.key.includes('eazy')) && !item.key.includes('testimoni')
+                    (item.key.includes('oca') || item.key.includes('eazy') || item.key.includes('netmonk') ||
+                    item.key.includes('pijar')) && !item.key.includes('testimoni')
                     );
                     const testimoniItems = Object.values(contents).filter(item => item.key.includes('testimoni'));
                     const generalItems = Object.values(contents).filter(item => item.key.includes('faq') ||
@@ -131,25 +133,63 @@
 
                         <!-- Netmonk Card -->
                         <div
-                            class="glass-panel rounded-2xl p-6 border border-gray-200 relative bg-gray-50 flex flex-col h-full opacity-80">
-                            <div class="absolute top-0 left-0 w-1 h-full bg-gray-300 rounded-l-2xl"></div>
-                            <h3 class="text-xl font-bold text-gray-700 mb-3 ml-2">Netmonk</h3>
-                            <div class="flex flex-col gap-2 ml-2 flex-grow justify-center">
-                                <p
-                                    class="text-sm text-gray-500 italic px-3 py-2 bg-gray-100 rounded-lg border border-gray-200 text-center">
-                                    Produk ini belum menyediakan konfigurasi konten dinamis.</p>
+                            class="glass-panel rounded-2xl p-6 border border-gray-200 relative bg-white flex flex-col h-full">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-red-500 rounded-l-2xl"></div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4 ml-2">Netmonk</h3>
+                            <div class="flex flex-col gap-2 ml-2 flex-grow">
+                                <% const netmonkItems=prodigiItems.filter(i=> i.key.includes('netmonk') &&
+                                    !i.key.includes('testimoni')); %>
+                                    <% if (netmonkItems.length> 0) { %>
+                                        <% netmonkItems.forEach(item=> { %>
+                                            <a href="/edit/<%= item.key %>"
+                                                class="text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-red-50 hover:text-red-700 border border-gray-200 hover:border-red-200 rounded-xl px-4 py-3 transition-colors flex justify-between items-center group">
+                                                <span>
+                                                    <%= item.title %>
+                                                </span>
+                                                <svg class="w-4 h-4 text-gray-400 group-hover:text-red-500 transition-colors"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <p class="text-sm text-gray-500 italic">Belum ada pengaturan konten
+                                                        yang tersedia.</p>
+                                                    <% } %>
                             </div>
                         </div>
 
                         <!-- Pijar Card -->
                         <div
-                            class="glass-panel rounded-2xl p-6 border border-gray-200 relative bg-gray-50 flex flex-col h-full opacity-80">
-                            <div class="absolute top-0 left-0 w-1 h-full bg-gray-300 rounded-l-2xl"></div>
-                            <h3 class="text-xl font-bold text-gray-700 mb-3 ml-2">Pijar Sekolah</h3>
-                            <div class="flex flex-col gap-2 ml-2 flex-grow justify-center">
-                                <p
-                                    class="text-sm text-gray-500 italic px-3 py-2 bg-gray-100 rounded-lg border border-gray-200 text-center">
-                                    Produk ini belum menyediakan konfigurasi konten dinamis.</p>
+                            class="glass-panel rounded-2xl p-6 border border-gray-200 relative bg-white flex flex-col h-full">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-red-500 rounded-l-2xl"></div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4 ml-2">Pijar Sekolah</h3>
+                            <div class="flex flex-col gap-2 ml-2 flex-grow">
+                                <% const pijarItems=prodigiItems.filter(i=> i.key.includes('pijar') &&
+                                    !i.key.includes('testimoni')); %>
+                                    <% if (pijarItems.length> 0) { %>
+                                        <% pijarItems.forEach(item=> { %>
+                                            <a href="/edit/<%= item.key %>"
+                                                class="text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-red-50 hover:text-red-700 border border-gray-200 hover:border-red-200 rounded-xl px-4 py-3 transition-colors flex justify-between items-center group">
+                                                <span>
+                                                    <%= item.title %>
+                                                </span>
+                                                <svg class="w-4 h-4 text-gray-400 group-hover:text-red-500 transition-colors"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <p class="text-sm text-gray-500 italic">Belum ada pengaturan konten
+                                                        yang tersedia.</p>
+                                                    <% } %>
                             </div>
                         </div>
 

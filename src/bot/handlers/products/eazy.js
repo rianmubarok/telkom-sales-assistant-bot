@@ -8,7 +8,7 @@ const showEazyMenu = async (ctx) => {
     await ctx.answerCbQuery();
     const buttons = [
         [Markup.button.callback("Harga", "btn_eazy_pricing")],
-        [Markup.button.callback("Voucher Cloud Recording", "btn_eazy_cloud")],
+        [Markup.button.callback("Cloud Recording", "btn_eazy_cloud")],
         [Markup.button.callback("⬅ Kembali", "btn_back")],
     ];
 

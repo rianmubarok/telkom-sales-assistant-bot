@@ -10,38 +10,30 @@ const defaultContents = [
         title: 'Eazy Cam Pricing',
         text: `*Harga Perangkat Eazy Cam*
 
-• *EazyCam IP Camera Indoor:* ± Rp 50.000
-• *EazyCam IP Camera Outdoor:* ± Rp 85.000
+Add on eazy cam indoor Rp 35.000/ bulan 
 
-_Harga dapat berubah sewaktu-waktu sesuai promo._
-
-*Informasi Tambahan & Berlangganan:*
-Harga yang tertera belum termasuk PPN 11%.`
+Syarat & Ketentuan : 
+- Belum termasuk PPN
+- Perangkat akan dikirim ke lokasi Pelanggan
+- Instalasi dilakukan Pelanggan 
+- Penempatan kamera di area yang tercover sinyal internet dari Modem Indibiz
+- Diperlukan catuan listrik, dan tidak perlu cabling ke modem`
     },
     {
         key: 'eazy_cam_cloud_pricing',
         title: 'Eazy Cam Cloud Pricing',
-        text: `*Voucher Cloud Recording*
+        text: `*Cloud Storage*
 
-Basic
-• *7 Hari 1 Bulan* ± Rp 45.510
-• *7 Hari 3 Bulan* ± Rp 137.307 
-• *7 Hari 6 Bulan* ± Rp 273.615 
-• *7 Hari 12 Bulan* ± Rp 545.898 
+Cloud Recording Playback Durasi 7 Hari
+Rp 38.950/bulan
 
-Plus
-• *14 Hari 1 Bulan* ± Rp 64.380
-• *14 Hari 3 Bulan* ± Rp 193.140 
-• *14 Hari 6 Bulan* ± Rp 386.280 
-• *14 Hari 12 Bulan* ± Rp 772.560 
+Cloud Recording Playback Durasi 14 Hari
+Rp 53.360/bulan
 
-Protect Plus
-• *30 Hari 1 Bulan* ± Rp 106.560
-• *30 Hari 3 Bulan* ± Rp 319.125 
-• *30 Hari 6 Bulan* ± Rp 627.150 
-• *30 Hari 12 Bulan* ± Rp 1.270.950 
+Cloud Recording Playback Durasi 30 Hari
+Rp 86.400/bulan
 
-_Harga dapat berubah sewaktu-waktu sesuai promo._`
+_Harga belum termasuk PPN._`
     },
     {
         key: 'indibiz_paket_basic',
@@ -58,8 +50,7 @@ _Harga dapat berubah sewaktu-waktu sesuai promo._`
 *Syarat & Ketentuan*
 1. Harga belum termasuk PPN 11%.
 2. Biaya Pasang Baru (PSB) Rp 150.000 dibayarkan di awal saat instalasi.
-3. Layanan khusus untuk segmen bisnis/badan usaha.
-4. Mendapatkan akses ke dashboard Indibiz untuk monitoring layanan.`
+3. Layanan khusus untuk segmen bisnis/badan usaha.`
     },
     {
         key: 'indibiz_paket_bisnis',
@@ -76,8 +67,7 @@ _Harga dapat berubah sewaktu-waktu sesuai promo._`
 *Syarat & Ketentuan*
 1. Harga belum termasuk PPN 11%.
 2. Biaya Pasang Baru (PSB) Rp 150.000 dibayarkan di awal saat instalasi.
-3. Layanan khusus untuk segmen bisnis/badan usaha.
-4. Mendapatkan akses ke dashboard Indibiz untuk monitoring layanan.`
+3. Layanan khusus untuk segmen bisnis/badan usaha.`
     },
     {
         key: 'oca_interaction_lite',
@@ -143,6 +133,13 @@ _Add-on OCA Blast Lite Rp 263.000. Melalui order di SC-ONE and My Indibiz._
 1. Pengecekan pertama H+1 setelah aktivasi, hasil dikirim melalui email.
 2. Pengecekan rutin dilakukan selama masa berlangganan.
 3. Notifikasi kebocoran baru dikirim via Email (30 hari pertama) dan WhatsApp (seterusnya).`
+    },
+    {
+        key: 'testimoni_indibiz',
+        title: 'Testimoni IndiBiz',
+        text: `*Testimoni IndiBiz*
+
+_Testimoni belum tersedia._`
     },
     {
         key: 'testimoni_pijar',
