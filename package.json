@@ -5,9 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "pm2": "pm2 start ecosystem.config.js",
-    "stop": "pm2 stop telkom-bot",
-    "restart": "pm2 restart telkom-bot",
+    "pm2": "npx pm2 start ecosystem.config.js",
+    "stop": "npx pm2 stop telkom-bot",
+    "restart": "npx pm2 restart telkom-bot",
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
