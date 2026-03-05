@@ -78,7 +78,7 @@ INSTRUKSI KEPADA AI:
 `;
 
         const response = await genAI.models.generateContent({
-            model: "gemini-3-flash-preview",
+            model: "gemini-2.5-flash-lite",
             config: {
                 maxOutputTokens: 4000,
                 temperature: 0.7,
